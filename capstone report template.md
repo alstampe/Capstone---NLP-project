@@ -2,12 +2,14 @@ Machine Learning Engineer Nanodegree
 ## Capstone Project
 Anne Line Stampe DNB
 December 8th, 2018
+
 ## I. Definition
 (approx. 1-2 pages)
-## Project Overview
-Natural Language Processing (NLP) is a higly relevant topic in many business areas, and specifically so within DNB, Norways largest financial institution. The need for rapidly increasing levels of automation and digitalization spurs a demand for ways to reegnineer processes based on manual handling of unstructured data. In addition to reduce costs and risk there is a clerly stated ambition to gain and use data-driven insight from these initiatives. 
 
-With a background from participation in OCR-project piloting recently I chose a NLP-case as my Capstone project, uniting freshy aquired skills and an interest in real-life text analysis. 
+## Project Overview
+Natural Language Processing (NLP) is a higly relevant topic in many business areas, and specifically so within DNB, Norways largest financial institution. The need for rapidly increasing levels of automation and digitalization spurs a demand for ways to reengineer processes based on manual handling of unstructured data. In addition to reduce costs and risk there is a clerly stated ambition to gain and use data-driven insight from these initiatives. 
+
+With a background from participation in OCR-project piloting recently I chose a NLP-case as my Capstone project, uniting freshy aquired skills and an interest in real-life document analysis. 
 
 NLP was briefly introduced in the Nanodegree course
 
@@ -32,23 +34,116 @@ Has an overview of the project been provided, such as the problem domain, projec
 Has enough background information been given so that an uninformed reader would understand the problem domain and following problem statement?
 
 ### Problem Statement
+Problem : digesting large volumes of information manually with related cost and risk of human errors. Need to speed up the process and digitize results to be able to make data a part of a digital process. Harvest reusable insight from extracted information as a by-product. Fundamentally, the initiative can also add traction to the collaborative effort of transforming the bank to a more tecnho-driven institution and illustrate opportunities in the field of machine learning and AI.     
+
+Compare agreements, ectract essence. 
+I go into the project with a moderate ambition of precision from the document analysis, but expect to be able to confirm the hypothesis stated in the three questions. For such a complicated field, a modest proof of concept is a good basis for believing in results from a possible full-scale project   
+
+Strategy for work:
+
+All text analysis, as other ML tasks, starts with understanding and preprocessing the data.
+
+Gathering and loading input data.
+Assessing data - this is all about understanding the input and from this, the need of preprocessing 
+Preprocessing
+Transforming
+Train
+Predict (etc)
+
+
+
+
+
+
+
+template q:
 In this section, you will want to clearly define the problem that you are trying to solve, including the strategy (outline of tasks) you will use to achieve the desired solution. You should also thoroughly discuss what the intended solution will be for this problem. Questions to ask yourself when writing this section:
 Is the problem statement clearly defined? Will the reader understand what you are expecting to solve?
 Have you thoroughly discussed how you will attempt to solve the problem?
 Is an anticipated solution clearly defined? Will the reader understand what results you are looking for?
 
-Problem : digesting large volumes of information manually with related cost and risk of human errors. Need to speed up the process and digitize results to be able to make data a part of a digital process. Harvest insight as a by-product. 
 
-Compare agreements, ectract essence. 
-I go into the project with a moderate ambition of precision  
 
 ### Metrics
+
+Similarity
+
+Topic extraction
+
+
+
+
+
 In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
 Are the metrics you’ve chosen to measure the performance of your models clearly discussed and defined?
 Have you provided reasonable justification for the metrics chosen based on the problem and solution?
+
 ## II. Analysis
 (approx. 2-4 pages)
+
 ### Data Exploration
+
+Describing the data
+A Mini-library of 41 books collected from the project Gutenberg.
+Project Gutenberg is a collection of freely available ebooks on various formats, forming a huge historical library of literature. 
+
+'Project Gutenberg offers over 57,000 free eBooks. Choose among free epub books, free kindle books, download them or read them online. You will find the world's great literature here, with focus on older works for which copyright has expired. Thousands of volunteers digitized and diligently proofread the eBooks, for enjoyment and education'. (From the website www.gutenberg.org)
+
+As a balance between corpus size and variety - and volume manageable for computation, I decided to use 41 books for my mimi-library. The choice of books is based on :
+
+- The books are all in english
+- 6 books have Norwegian origin (Ibsens pays and 2 faitytale collections)
+- Some of the items are plays (Ibsen, Shakespeare)
+- I have myself read all books - primarily wholly, but for some only partially,  (Shakespeares complete works, the Iliad)
+- Some authors are represented by several works (Verne, Ibsen, Dumas, Burroughs)
+- Nearly half of the items can be described as 'journey tales'.
+
+My list, as named in the file folder:
+
+ 'A_Dolls_house_Ibsen.rtf',
+ 'Alice_in_Wonderland.rtf',
+ 'All_around_the_moon_Verne.rtf',
+ 'An_archtartic_mystery_verne.rtf',
+ 'Anthem_Rand.rtf',
+ 'Around_the_world_in_80_days_Verne.rtf',
+ 'Don_Quixote.rtf',
+ 'Fairytales_H_C_Andersen.rtf',
+ 'Ghosts_Ibsen.rtf',
+ 'Great_Expectations_by_Charles_Dickens.rtf',
+ 'Gullivers_Travels_Defoe.rtf',
+ 'Hedda_Gabler_Ibsen .rtf',
+ 'Iliad_Homer.rtf',
+ 'Jungle_tales_of_Tarzan.rtf',
+ 'LIttle_Eyolf_Ibsen.rtf',
+ 'Martin_Eden_Jack_London.rtf',
+ 'Meditations_Aurelius.rtf',
+ 'Metamorphosis _ Kafka.rtf',
+ 'Norwegian_tales_Asbjornsen_Moe.rtf',
+ 'Peter_Pan.rtf',
+ 'Pride_and_Prejudices .rtf',
+ 'Robinson_Crusoe _ Defoe.rtf',
+ 'Shakespeare.rtf',
+ 'Siddharta _ Hesse.rtf',
+ 'Swanns_Way_Proust.rtf',
+ 'Tale_of_two_cities_dickens.rtf',
+ 'Tarzan_of_the_apes.rtf',
+ 'Tarzan_the_terrible.rtf',
+ 'The_3_musketeers_Dumas.rtf',
+ 'The_Iron_Heel_Jack_london.rtf',
+ 'The_beasts_of_Tarzan.rtf',
+ 'The_black_tulip_Dumas.rtf',
+ 'The_brothers_karamazov_Dostoyevsky.rtf',
+ 'The_importance_of_being_earnest_Wilde.rtf',
+ 'The_jungle_book_Kipling.rtf',
+ 'The_man_in_the_iron_mask_Dumas.rtf',
+ 'The_return_of_tarzan.rtf',
+ 'The_secret_of_the_island_verne.rtf',
+ 'The_trial_Kafka.rtf',
+ 'War_and_peace_tolstoy.rtf',
+ 'Wuthering_Heights_bronte.rtf'
+
+Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which is available for all books. the file naming was kept for the sake of convenience as the code reading the files was setup for the .rtf extension. 
+
 In this section, you will be expected to analyze the data you are using for the problem. This data can either be in the form of a dataset (or datasets), input data (or input files), or even an environment. The type of data should be thoroughly described and, if possible, have basic statistics and information presented (such as discussion of input features or defining characteristics about the input or environment). Any abnormalities or interesting qualities about the data that may need to be addressed have been identified (such as features that need to be transformed or the possibility of outliers). Questions to ask yourself when writing this section:
 If a dataset is present for this problem, have you thoroughly discussed certain features about the dataset? Has a data sample been provided to the reader?
 If a dataset is present for this problem, are statistics about the dataset calculated and reported? Have any relevant results from this calculation been discussed?
