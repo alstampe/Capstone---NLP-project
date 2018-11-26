@@ -217,6 +217,39 @@ This exercize can be done for the individual books, but across english books the
 
 Next step would be to remove 'stop words', the most common filler words. 
 
+If I use the result form removing stopwords, the most frequent words for the full corpus are:
+
+('said', 19290),
+ ('one', 17840),
+ ('would', 17020),
+ ('man', 11407),
+ ('could', 11068),
+ ('upon', 9815),
+ ('well', 9252),
+ ('time', 9081),
+ ('know', 8822),
+ ('thou', 8765)
+
+Looking at this list, I can recognize the words of literaure objects and dialogue-oriented text. Tha last word is a hint of the book's age and I guess this is a Shakesperian word. 
+
+Applying the word frequency on Alice without stopwords, we get this list: 
+('alice', 173),
+ ('said', 144),
+ ('little', 59),
+ ('rabbit', 37),
+ ('one', 35),
+ ('like', 34),
+ ('queen', 30),
+ ('could', 28),
+ ('mouse', 27),
+ ('illustration', 26)
+
+for 'The junglebook' , the10  most frequest words when cleaned for filler words are (using FreqDist):
+
+({'said': 430, 'little': 231, 'mowgli': 220, 'man': 177, 'one': 174, 'would': 162, 'jungle': 147, 'head': 137, 'bagheera': 129, 'could': 125, ...})
+
+#### Recap - data cleaning in nlp
+
 Cleaning the corpus is done by several small cleaning code-snippets;
 
 - sentence tokenization
@@ -226,9 +259,7 @@ Cleaning the corpus is done by several small cleaning code-snippets;
 - removing stopwords
 - lemmming and stemming
 
-for 'The junglebook' , the10  most frequest words when cleaned for filler words are (using FreqDist):
 
-({'said': 430, 'little': 231, 'mowgli': 220, 'man': 177, 'one': 174, 'would': 162, 'jungle': 147, 'head': 137, 'bagheera': 129, 'could': 125, ...})
 
 
 
@@ -320,7 +351,7 @@ Similarity on doc(book) level.
 
 
 
-3) Topic extraction
+### 3) Topic extraction
 
 For topic extraction I chose to use a third part of Gensim; doc2bow - using a bag-of-word method (bow: bag-of-words)
 I also used another algorithm; LDA; often used for nlp. LDA: Latent Dirichlet Allocation. LDA is in the Gensim package, too.  
@@ -331,6 +362,87 @@ Creating a matrix with the Doc2Bow
 Instanciating lda
 Performing lda on the corpus, using the dictionary
 Printing the calculated topics from the ldamodel
+
+Data input for Topic Extraction will be, on a book level, the set of preprocessed sentences from the 'make-fin-sent' function. For finding topics, we do not want filler words as they will form a data noise here. ''
+
+Using Alice as my example again I start with creating a corpora Dictionary and use 'alice_fin_sent'.
+
+dictionary_alice = corpora.Dictionary(alice_fin_sent)
+
+doc_term_matrix_alice = [dictionary_alice.doc2bow(doc) for doc in alice_fin_sent]
+
+Lda = gensim.models.ldamodel.LdaModel
+
+ldamodel_alice = Lda(doc_term_matrix_alice, num_topics=3, id2word = dictionary_alice, passes=50)
+
+alice_topics = ldamodel_alice.print_topics(num_words=5)
+for topic in alice_topics:
+    print(topic)
+    
+Presenting the proposed 3 topics using 50 passes: 
+
+(0, '0.014*"one" + 0.012*"duchess" + 0.009*"alice" + 0.008*"first" + 0.008*"little"')
+(1, '0.036*"alice" + 0.018*"little" + 0.016*"said" + 0.012*"rabbit" + 0.009*"could"')
+(2, '0.056*"said" + 0.037*"alice" + 0.012*"king" + 0.012*"know" + 0.009*"like"')
+
+Setting to 250 passes: 
+
+(0, '0.031*"alice" + 0.021*"said" + 0.010*"mouse" + 0.009*"thought" + 0.009*"go"')
+(1, '0.041*"alice" + 0.037*"said" + 0.010*"rabbit" + 0.007*"came" + 0.007*"moment"')
+(2, '0.017*"one" + 0.017*"little" + 0.013*"said" + 0.013*"alice" + 0.012*"way"')
+
+Setting to 750 passes:
+
+0, '0.066*"said" + 0.042*"alice" + 0.010*"duchess" + 0.009*"oh" + 0.009*"think"')
+(1, '0.014*"little" + 0.013*"know" + 0.010*"alice" + 0.009*"said" + 0.009*"queen"')
+(2, '0.031*"alice" + 0.015*"rabbit" + 0.011*"little" + 0.009*"white" + 0.008*"one"')
+
+
+
+The topic extraction must be performed for each book, and on a sentence level.
+As shown, I varied the no: of passes, and also the no of topics and num_words. It is not abvious that the results increase with more passes; is "said+alice+duchess+oh+think' better than 'one+duchess+alice+first+little' ?
+
+I can see that Proposed Topics are similar to frequent words, but not 100% identical. 
+
+### Vector-based word analysis
+
+Gensim has a reknown Vectorization option, the Word2Vec 
+
+I start by establishing a word-based model; 'word-model'.
+
+The word_model is applied on the whole corpus on a sentence-level, using the version 'sentences'.
+
+word_model.build_vocab(sentences)
+
+print("model vocabulary length:", len(word_model.wv.vocab))
+model vocabulary length: 12445
+
+word_model.train(sentences, epochs=5,
+total_examples=12445)
+
+all_word_vectors_matrix = word_model.wv.vectors
+
+the resulting matrix is huge (12445, 200). To be able to visualize and look into the matrix I use TSNE to reduce the dimensions to 2. 
+
+tsne = sklearn.manifold.TSNE(n_components = 2, 
+                             early_exaggeration = 6,
+                             learning_rate = 500,
+                             n_iter = 300,
+                             random_state = 2)
+
+ 
+all_word_vectors_matrix_2dim = tsne.fit_transform(all_word_vectors_matrix)
+
+The matrix values are set into a dataframe for inspection and visuals. The shape is the vocabulary size (12445, 2).
+
+On this dataframe I can 'look at' the word data in a frame with visuals. 
+
+All the 12445 wiords are placed along the x- and y-axis, forming a circle-like cloud. 
+
+### Book comparisons
+
+A hypothesis was to use tfidf here, but reding lays out that LDA does not need TF-IDF and can be used with Bag_of_words only. 
+
 
 
 In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
