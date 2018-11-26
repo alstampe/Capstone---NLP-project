@@ -97,6 +97,7 @@ As a balance between corpus size and variety - and volume manageable for computa
 - I have myself read all books - primarily wholly, but for some only partially,  (Shakespeares complete works, the Iliad)
 - Some authors are represented by several works (Verne, Ibsen, Dumas, Burroughs)
 - Nearly half of the items can be described as 'journey tales'.
+- Two of the authors (Shakespeare and Ibsen) are known for their very rich vocabulary, said to be 29.000 and 27.000 respectively.  
 
 My list, as named in the file folder:
 
@@ -142,7 +143,95 @@ My list, as named in the file folder:
  'War_and_peace_tolstoy.rtf',
  'Wuthering_Heights_bronte.rtf'
 
-Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which is available for all books. the file naming was kept for the sake of convenience as the code reading the files was setup for the .rtf extension. 
+Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which i realized is available for all my books. The file naming was kept for the sake of convenience as the code reading the files was setup for the .rtf extension. 
+
+Comments on the book data
+
+- After a few assessments of the data on a word level I noticed some parts of the vocabulary that I did not expect from older works, such as 'email'. I had screened through the first part of most of the books to verify the content and format, which all seemed correct. At closer inspection I realized that all ebooks had a standard, quite long, section at the end, containing legal description of the ebook handling. In addition to the introduction of unwanted irrelevant vocabulary to the corpus this part is the same in all books and would therefore reduce the uniqueness of the items. The legal section was for this reason removed from each of the books.   
+
+- The complete volume of words form the books, the 'corpus' was analyzed thouroughly. 
+  There are many levels (and combination of levels) to look at the corpus;  
+
+- Corpus level
+- Book level
+- Sentence level
+- Vocabulary level (unique words)
+- Word level (real words, or 'tokens')
+- Level of 'words' before removing non-meaningful characters.  
+- Level of 'reduced tokens'; ie words cleaned and/or transformed to a netted minimum.   
+
+Below is an example of numbers for these levels
+
+Corpus_raw: 30776216
+Wordlist: 5572533
+Sentences: 309218
+Vocab: 96909
+
+As a reflection 96909 comes across as a very rich vocabulary, even with Shakespeare and Ibsen onboard. One reason is probably that names are included in the corpus and are counted as words. Linguists state that if we include all varieties of known english words it will add up to ca 500.000. A normal active vocabulary consists of a modest 5-6000 words in most countries.    
+
+One of the first transforms on the corpus was done using the gensim.utils.simple_preprocess, which performs this : 'Convert a document into a list of lowercase tokens, ignoring tokens that are too short or too long'. https://programtalk.com/python-examples/gensim.utils.simple_preprocess/. On inspection this returns a compact list of tokens and the number of words is reduced significantly, ie for Alice in wonderland, from 53690 raw words to 9401 tokens. Netting down to unique tokens, in effect the 'token vocabulary' shows a modest token vocabulary of 1504.    
+
+Although libraries with opsion as 'simple_preprocess' is useful, I wanted to test effects of the tokenizers in detail, and spent time trying out different varietier on sentence and word levels. 
+
+#### Assessing different word_tokenizers
+
+Tokenizers in common librares present some different handling of the text. I tested the different outcomes of two often used word tokenizers applied on sentences created from the sentence_tokenizer; 
+
+nltk.tokenize.word_tokenize(sentence) versus nltk.tokenize.wordpunct_tokenize(sentence)
+For sentence no:99 in the Alice corpus we can see how the word tokenizers differ, respectively:
+
+('she was up to her chin in salt-water.',
+ ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt-water', '.'],
+ ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt', '-', 'water', '.'])
+
+The word_tokenizer keeps the hyphenated words as one token, the wordpunct_tokenize splits these words into 3 separate tokens.  when analyzing text in literary works, it makes sense to keep the original word as written by the author, this sentence is a good example as the words 'salt' and 'water' separately is quite different from 'salt-water'.  The first could be a part of a recipe for baking bread, the second indicates seawater - or tears. 
+
+I choose to use the word tokenizer for this book-based project, although another context could be a case for choosing the  wordpunct_tokenizer. 
+
+#### Cleaning the sentences for stopwords
+
+When preparing for topic analysis and other content assessments we want to look at the menaingful parts of the text, not the 'filler words'. There are many lists of 'filler words' for several lanuages, I use a list of english 'stop words' and write two small code snippets to remove these words in a sentence and then loop for all sentences in a book. The function 'make-fin-sent' will 'make final sentences' for a given book, to be used for topic extraction: 
+
+def remove_stopwords(words):
+       return [word for word in words if word not in stop_words]
+
+def make_fin_sent(sent_in):
+    fin_sent=[]
+    for sent in sent_in:
+        fin_sent.append(remove_stopwords(sent))
+    return fin_sent
+
+
+#### Looking at frequent words in a text
+
+
+Zooming on on my corpus the need for data cleaning soon becomes obvious. First try of 'most common words' on a raw (uncleaned) corpus returns a rather uninteresting list over the 10 most frequent 'words', using FreqDist
+
+({',': 460770, 'the': 270580, '.': 258286, 'and': 160660, 'of': 143300, 'to': 142159, 'a': 95923, 'I': 91671, 'in': 78754, 'that': 71929, ...})
+
+Removing punctiations and single characters improves a little
+
+({'the': 270904, 'and': 161240, 'to': 143756, 'of': 143437, 'a': 96535, 'I': 92847, 'in': 79205, 'that': 72439, 'he': 64047, 'his': 58524, ...})
+
+This exercize can be done for the individual books, but across english books the top 20 words pretty much remains the same. 
+
+Next step would be to remove 'stop words', the most common filler words. 
+
+Cleaning the corpus is done by several small cleaning code-snippets;
+
+- sentence tokenization
+- word tokenizations
+- removing unwanted characters (often called normalization)
+- converting all words to lowercase  
+- removing stopwords
+- lemmming and stemming
+
+for 'The junglebook' , the10  most frequest words when cleaned for filler words are (using FreqDist):
+
+({'said': 430, 'little': 231, 'mowgli': 220, 'man': 177, 'one': 174, 'would': 162, 'jungle': 147, 'head': 137, 'bagheera': 129, 'could': 125, ...})
+
+
+
 
 In this section, you will be expected to analyze the data you are using for the problem. This data can either be in the form of a dataset (or datasets), input data (or input files), or even an environment. The type of data should be thoroughly described and, if possible, have basic statistics and information presented (such as discussion of input features or defining characteristics about the input or environment). Any abnormalities or interesting qualities about the data that may need to be addressed have been identified (such as features that need to be transformed or the possibility of outliers). Questions to ask yourself when writing this section:
 If a dataset is present for this problem, have you thoroughly discussed certain features about the dataset? Has a data sample been provided to the reader?
@@ -176,7 +265,7 @@ NLP requires several steps of preprocessing just as we do for numerical values a
 I realized that the three separate questions posed in the project would have to be answered with three separate paths with different data prepping and processing. 
 
 1) Data analysis of all words in all books in the mini-library
-- With a focus on the sum of all words in the book collection the preprocessing starts with a 'full' collection of words across the books. The text is divided into sentences and all words are identified separately. The books are structored into sentences, using a trained process. I also use a word-oriented vectorization and eventually look at the matrix of all words, identifying the most frequent words and how the words are related to each other in the matrix.
+- With a focus on the sum of all words in the book collection the preprocessing starts with a 'full' collection of words across the books. The text is divided into sentences and all words are identified separately. The books are structured into sentences, using a trained process. I also use a word-oriented vectorization and eventually look at the matrix of all words, identifying the most frequent words and how the words are related to each other in the matrix.
 
 In the analysis process i keep separate versions of the resukt of different text preparations, to be in control of the results and which versions suitable for the next step of analysis. 
 
@@ -199,6 +288,51 @@ Based on the Data Exploration section, if there were abnormalities or characteri
 If no preprocessing is needed, has it been made clear why?
 
 ### Implementation
+
+Transformation of data after preporcessing
+
+Stepping up the analysis after preprocessing is done by vectorizing the corpus.
+There are numerous different ways to do this and quite tricky to navigate among the options.
+I chose to use the Gensim functionality for vectorizing. Gensim offers vetorization option on document and word level, with word2Doc and Word2Vec. 
+ 1)analysing the corpus on a word level
+
+The whole corpus is vectorized with Word2Vec.
+
+The model (word_model) is built and used :
+
+Setting parameters
+Instanciating the model; word_model
+Building vocabulary
+Train the model on corpus sentences
+Creating and looking at the matrix from the model
+INstanciating tSNE for dimension reduction of the matrix
+Run tsneFitTransform on the matrix to obtain a 2dimensional matrix
+Visualizing the 2dim matrix from a dataframe and plots
+Using the model for finding similar instances (data points) 
+
+2) Analysing the corpus on a book level - looking for similarities
+
+For looking at corpus on a book level I used Gensims Doc2Vec 
+
+model_doc
+The model is trained on the book_corpus. 
+Similarity on doc(book) level. 
+
+
+
+3) Topic extraction
+
+For topic extraction I chose to use a third part of Gensim; doc2bow - using a bag-of-word method (bow: bag-of-words)
+I also used another algorithm; LDA; often used for nlp. LDA: Latent Dirichlet Allocation. LDA is in the Gensim package, too.  
+Create a Dictionary from the data, then a bag of words.  
+
+Creating a corpora Dictionary based on a preprocessed book corpus on sentence level
+Creating a matrix with the Doc2Bow
+Instanciating lda
+Performing lda on the corpus, using the dictionary
+Printing the calculated topics from the ldamodel
+
+
 In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
 Is it made clear how the algorithms and techniques were implemented with the given datasets or input data?
 Were there any complications with the original metrics or techniques that required changing prior to acquiring a solution?
@@ -302,6 +436,9 @@ My project did not include establishing a user interface for input of random doc
 Topic extraction need to be tuned more, to find the optimal parameters for a given corpus.
 
 
+In some initial assessments of the text I tried out two different tokenizers and was suprised to see the diference in vocabulary size it produced. At furter investigation (I made the diff set by subtracting the smallest vocab from the larger) i could see where the tokenizers diverge. The punkt_tokenizer splits hyphenated words, the standard nltk tokenizer does not. 
+A discussion on tokenizers is presented here: 
+https://www.researchgate.net/publication/264157595_A_Comparison_of_13_Tokenizers_on_MEDLINE
 
 
 In this section, you will need to provide discussion as to how one aspect of the implementation you designed could be improved. As an example, consider ways your implementation can be made more general, and what would need to be modified. You do not need to make this improvement, but the potential solutions resulting from these changes are considered and compared/contrasted to your current solution. Questions to ask yourself when writing this section:
