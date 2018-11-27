@@ -462,6 +462,7 @@ A few examples:
 
 ![image](https://user-images.githubusercontent.com/42574791/49079447-de86b900-f240-11e8-929c-519de82fb7ac.png)
 
+![image](https://user-images.githubusercontent.com/42574791/49079567-31607080-f241-11e8-86e4-cefdea35dffb.png)
 
 
 
@@ -493,12 +494,65 @@ word_model.wv.most_similar('hunger')
  ('hungry', 0.6860570907592773),
  ('sickness', 0.6858627796173096),
  ('craving', 0.6856997013092041)
+ 
+ FInally, I want to try out the classic 'king-to-queen' vector comparison. 
+ For this purpose I use the most_similar_cosmul functionality, based on cosine computation. 
+ 
+ Tha base for this is a ' x relates to y as a relates to...' logic, expecting to return the word that has a menaingful relation to a as y has to x. My attempts to do this are not as clear as the queen-king case, probably because of a limited corpus, but some word pairs are ok, as shown below. 
 
+input:
+nearest_similarity_cosmul("ocean", "submarine", "jungle")
+nearest_similarity_cosmul("swann", "odette", "nora")
+
+returns:
+ocean is related to submarine, as jungle is related to forest
+swann is related to odette, as nora is related to helmer
+
+Of the different results from trying to remake the king-queen pairing, this wasone of the more amusing;
+
+'queen is related to king, as woman is related to girl'
 
 ### Book comparisons
 
-A hypothesis was to use tfidf here, but reding lays out that LDA does not need TF-IDF and can be used with Bag_of_words only. 
+A hypothesis was to use tfidf here, but reading lays out that LDA does not need TF-IDF and can be used with Bag_of_words only. Tehre is a debate on whether TF-idf will improve the results, but without clear conclusions. 
 
+model_doc = gensim.models.Doc2Vec(vector_size = 300, 
+                              min_count = 3, 
+                              epochs = 10)
+                              
+model_doc.build_vocab(book_corpus)     
+
+model_doc.train(book_corpus, total_examples=3, epochs=10)
+
+FInding the most similar book pairs, sorted by hitrate(similarity)
+for book in book_filenames:
+    most_similar = model_doc.docvecs.most_similar(book)[0][0]
+    print("{} - {}".format(book, most_similar))
+    
+Testing on books
+
+model_doc.docvecs.most_similar('Books\Tarzan_of_the_apes.rtf')
+
+returns the other Tarzan books, folowed by adventure books for adolescents; quite a good result.  
+
+('Books\\The_beasts_of_Tarzan.rtf', 0.7585173845291138),
+ ('Books\\Jungle_tales_of_Tarzan.rtf', 0.7063543796539307),
+ ('Books\\The_return_of_tarzan.rtf', 0.4879530370235443),
+ ('Books\\Tarzan_the_terrible.rtf', 0.4041978716850281),
+ ('Books\\An_archtartic_mystery_verne.rtf', 0.319263219833374),
+ ('Books\\The_secret_of_the_island_verne.rtf', 0.3165384531021118),
+ ('Books\\The_jungle_book_Kipling.rtf', 0.31132781505584717),
+ ('Books\\Peter_Pan.rtf', 0.30049124360084534),
+ ('Books\\Alice_in_Wonderland.rtf', 0.28424006700515747),
+ ('Books\\Robinson_Crusoe _ Defoe.rtf', 0.2718788981437683)
+
+ model_doc.docvecs.most_similar(10) (Book 10 = Gullivers Travels by Defoe)
+ 
+ ('Books\\Robinson_Crusoe _ Defoe.rtf', 0.47113150358200073),
+ ('Books\\Pride_and_Prejudices .rtf', 0.3537435233592987),
+ ('Books\\Meditations_Aurelius.rtf', 0.3536701798439026),
+ ('Books\\Fairytales_H_C_Andersen.rtf', 0.25862976908683777),
+ ('Books\\The_secret_of_the_island_verne.rtf', 0.25140485167503357)
 
 
 In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
@@ -510,10 +564,16 @@ Was there any part of the coding process (e.g., writing complicated functions) t
 
 NLP enjoys a wide variety of resources for prepping and transforming data, Nevertheless, there is room for coding and adjusting before, during and after package usage. 
 
-Choice of tokenization algo.
-Hyphenated words
+Choice of tokenization algorithm.
+Hyphenated words - do I keep them?
 Stopword removal on sentence level
 LDA parameters 
+Vector parameters
+Number of epochs
+
+The models were kept, the parameters tweaked
+
+Choices of levels where to operate 
 
 
 
@@ -526,13 +586,25 @@ Are intermediate and final solutions clearly reported as the process is improved
 (approx. 2-3 pages)
 
 1) Word analysis
-- Confirming vocabulary 
+- Confirming vocabulary, clear visual of vocab in a plotted wordcloud
+- Zooming in on chosen words, see the vicinity words
+- identifying most frequent words
+
 
 2) Book similarity
-- Quite good results. Obvious similarity between books by the same author, also similarity caused by plot and genre.
+- Good results after parameter tweaks. Obvious similarity between books by the same author, also similarity caused by plot and genre.
 
 2) Topic extraction
-- Quite good results. Verification by book knowledge and a generous reading of the topic words.   
+- Quite good results. Verification by book knowledge and a generous reading / interpretation of the topic words.   
+
+Test of unknown book 
+Finally I found a completely unknown book and performed Topic extraction on the text
+
+The results from this old book about food and chemmistry strikes me by being suprisingly relevant for today's view on food and health. 
+
+ '0.017*"food" + 0.016*"protein" + 0.012*"quantity" + 0.011*"matter"'
+ '0.007*"salt" + 0.007*"one" + 0.006*"food" + 0.005*"meat"'
+
 
 
 ### Model Evaluation and Validation
@@ -544,7 +616,7 @@ Are intermediate and final solutions clearly reported as the process is improved
 
 3) Topic extraction
 
-
+Testing on a new and unknown text confirmed the results for the other 41 books.
 
 
 In this section, the final model and any supporting qualities should be evaluated in detail. It should be clear how the final model was derived and why this model was chosen. In addition, some type of analysis should be used to validate the robustness of this model and its solution, such as manipulating the input data or environment to see how the model’s solution is affected (this is called sensitivity analysis). Questions to ask yourself when writing this section:
