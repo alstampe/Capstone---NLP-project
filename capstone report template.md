@@ -457,10 +457,39 @@ All the 12445 wiords are placed along the x- and y-axis, forming a circle-like c
 
 I can 'zoom in' on elements in the frame, by navigating along the x- and y-axis.
 
-When picking a word the ccorinates are given , whowing where the word resides. If I zoom in on the area around the chosen word I can see which words are in the close vicinity vector-vise. 
+When picking a word the coorinates are given , whowing where the word resides. If I zoom in on the area around the chosen word I can see which words are in the close vicinity vector-vise. 
 A few examples:
 
 ![](image.png)
+
+Most similar words - in the vector dimension
+Below are two examples. 
+
+word_model.wv.most_similar('pride')
+
+('envy', 0.7191991806030273),
+ ('ambition', 0.7174361348152161),
+ ('meekness', 0.7124776244163513),
+ ('fortitude', 0.7029587030410767),
+ ('chastisement', 0.7014052271842957),
+ ('disdain', 0.7011118531227112),
+ ('hypocrisy', 0.7005854845046997),
+ ('penitence', 0.6966824531555176),
+ ('cowardice', 0.696437656879425),
+ ('deceitful', 0.6881036758422852)
+
+word_model.wv.most_similar('hunger')
+
+('thirst', 0.8457642197608948),
+ ('pangs', 0.7334113121032715),
+ ('fatigue', 0.7226671576499939),
+ ('gnawing', 0.7220444679260254),
+ ('starved', 0.6977795362472534),
+ ('exhaustion', 0.6882658004760742),
+ ('famine', 0.6871694922447205),
+ ('hungry', 0.6860570907592773),
+ ('sickness', 0.6858627796173096),
+ ('craving', 0.6856997013092041)
 
 
 ### Book comparisons
