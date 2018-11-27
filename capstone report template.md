@@ -460,7 +460,10 @@ I can 'zoom in' on elements in the frame, by navigating along the x- and y-axis.
 When picking a word the coorinates are given , whowing where the word resides. If I zoom in on the area around the chosen word I can see which words are in the close vicinity vector-vise. 
 A few examples:
 
-![](image.png)
+![](screenshots/wordcloud.png)
+
+![Murder]('screenshots/murder.png')
+
 
 Most similar words - in the vector dimension
 Below are two examples. 
