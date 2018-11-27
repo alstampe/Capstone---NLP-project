@@ -66,7 +66,10 @@ Is an anticipated solution clearly defined? Will the reader understand what resu
 
 ### Metrics
 
-Similarity
+As described in the capstone project proposal, the three parts of my project are all of a nature where sharp metrics   
+Similarity - words
+
+Similarity - books
 
 Topic extraction
 
@@ -400,22 +403,35 @@ Setting to 750 passes:
 
 
 The topic extraction must be performed for each book, and on a sentence level.
-As shown, I varied the no: of passes, and also the no of topics and num_words. It is not abvious that the results increase with more passes; is "said+alice+duchess+oh+think' better than 'one+duchess+alice+first+little' ?
+As shown, I varied the no: of passes, and also the no of topics and num_words. It is not obvious that the results increase with more passes; is "said+alice+duchess+oh+think' better than 'one+duchess+alice+first+little' ?
 
-I can see that Proposed Topics are similar to frequent words, but not 100% identical. 
+I can see that Proposed Topics are similar to the book's frequent words, but not 100% identical.
 
-### Vector-based word analysis
+The same topic extraction steps were done for 5 other books, with similar results. 
+As  a pattern, topics seem to include the books protagonist, the second most important character (if any) and some typical words. 
 
-Gensim has a reknown Vectorization option, the Word2Vec 
+### Vector-based word analysis 
 
-I start by establishing a word-based model; 'word-model'.
+Gensim has a reknown Vectorization option, the Word2Vec which, as the name implies, vectorizes the corpus on a word level. Each unique word is assigned a numerical value, giving av matrix where one dimension is the size of the vocabulary.  
 
-The word_model is applied on the whole corpus on a sentence-level, using the version 'sentences'.
+I start by establishing a word-based Word2Vec model; named 'word_model'. 
+
+The word_model is applied on the whole corpus tokenized on a sentence-level, using the version called 'sentences'. In 'sentences', the full corpus is split into sentences and each word is tokenized. 
+
+Sentence no 5678 in the corpus is a good exapmle: 'when','we','get','to','the','moon','what','shall','we','do','there'
+
+The word_model is set by : word_model = w2V.Word2Vec(parameters)
+
+The parameters : 
 
 word_model.build_vocab(sentences)
 
 print("model vocabulary length:", len(word_model.wv.vocab))
 model vocabulary length: 12445
+
+COnfirming the model after building vocabulary:
+
+Word2Vec(vocab=12445, size=200, alpha=0.025)
 
 word_model.train(sentences, epochs=5,
 total_examples=12445)
@@ -438,6 +454,14 @@ The matrix values are set into a dataframe for inspection and visuals. The shape
 On this dataframe I can 'look at' the word data in a frame with visuals. 
 
 All the 12445 wiords are placed along the x- and y-axis, forming a circle-like cloud. 
+
+I can 'zoom in' on elements in the frame, by navigating along the x- and y-axis.
+
+When picking a word the ccorinates are given , whowing where the word resides. If I zoom in on the area around the chosen word I can see which words are in the close vicinity vector-vise. 
+A few examples:
+
+![](image.png)
+
 
 ### Book comparisons
 
