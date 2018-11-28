@@ -369,19 +369,20 @@ If no preprocessing is needed, has it been made clear why?
 
 ### Implementation
 
-Transformation of data after preporcessing
+Transformation of data after preprocessing
 
 Stepping up the analysis after preprocessing is done by vectorizing the corpus.
 There are numerous different ways to do this and quite tricky to navigate among the options.
 I chose to use the Gensim functionality for vectorizing. Gensim offers vetorization option on document and word level, with word2Doc and Word2Vec. 
- 1)analysing the corpus on a word level
 
-The whole corpus is vectorized with Word2Vec.
+ 1)Analysing the corpus on a word level
+
+The whole corpus is vectorized with Word2Vec. To be able to visually inspect the results I use TSNE to reduce the dimensionality to 2 dimensions.  
 
 The model (word_model) is built and used :
 
 Setting parameters
-Instanciating the model; word_model
+Instanciating the model; 'word_model'
 Building vocabulary
 Train the model on corpus sentences
 Creating and looking at the matrix from the model
