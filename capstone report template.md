@@ -4,29 +4,28 @@ Anne Line Stampe DNB
 December 8th, 2018
 
 ## I. Definition
-(approx. 1-2 pages)
 
 ## Project Overview
-Natural Language Processing (NLP) is a higly relevant topic in many business areas, and specifically so within DNB, Norways largest financial institution. The need for rapidly increasing levels of automation and digitalization spurs a demand for ways to reengineer processes based on manual handling of unstructured data. In addition to reduce costs and risk there is a clerly stated ambition to gain and use data-driven insight from these initiatives. 
+Natural Language Processing (NLP) is a higly relevant topic in many business areas, and specifically so within DNB (where I work), Norways largest financial institution. The need for rapidly increasing levels of automation and digitalization spurs a demand for ways to reengineer processes based on manual handling of unstructured data. In addition to reduce costs and risk there is a clearly stated ambition to gain and use data-driven insight from these initiatives. 
 
 With a background from participation in OCR-project piloting recently I chose a NLP-case as my Capstone project, uniting freshy aquired skills and an interest in real-life document analysis. 
 
 NLP was briefly introduced in the Nanodegree course
 
-My focus is to build skills and insights on possible solutions for analysis of text in form of full-scale documents rather than emails, tweets or other short, informal text objects. 
+My focus is to build skills and insights on possible solutions for analysis of text in form of full-scale documents rather than emails, tweets or other short, informal text objects. The data used in the project is text from 41 full books from the GUtenmebrg project. For test purposes an additional unknown book will be used at the end of the project.  
 
 NLP covers a wide variety of methods, tools and theories.
 
-As described in the project proposal my project has three focus areas;
+As described in the project proposal my project addresses three challenges;
 
-- Analysis of words in the full corpus; vocabulary, density, vector representation etc
+- Analysis of words in a full corpus; vocabulary, density, vector representation etc
 - Methods for comparing individual text objects (books) for similarity based on vector representation
 - Methods for topic extraction from text objects, on a book level
 
-In addition to these three issues, I want to gain more insight into the NLP field in general.
+In addition to these three specific issues, I want to gain more insight into the NLP field in general from the project.
 
-Relevance for my job; need to understand documents by assessing vocabulary, comparing documents and extracting topics. There is a need to isolate specific data elements from the document, but this is not a part of the Capstone scope. 
-I plan to try out the code on internal documents later. 
+The project has a high relevance for my job; we want to be able to understand documents by assessing vocabulary, comparing documents and extracting topics with algorithms as an alterative to humans reading and assessing the texts. There is also a need to be able to isolate specific data elements from documents (names, account numbers, values etc), but this is not a part of the Capstone scope. 
+I plan to try out the project code on internal documents later. 
 
 
 In this section, look to provide a high-level overview of the project in layman’s terms. Questions to ask yourself when writing this section:
@@ -34,20 +33,32 @@ Has an overview of the project been provided, such as the problem domain, projec
 Has enough background information been given so that an uninformed reader would understand the problem domain and following problem statement?
 
 ### Problem Statement
-Problem : digesting large volumes of information manually with related cost and risk of human errors. Need to speed up the process and digitize results to be able to make data a part of a digital process. Harvest reusable insight from extracted information as a by-product. Fundamentally, the initiative can also add traction to the collaborative effort of transforming the bank to a more tecnho-driven institution and illustrate opportunities in the field of machine learning and AI.     
+The underlying problem I want to addreess is the challenge we face when automating our prorcesses in the bank; some tasks are by nature based on non-numerical data and the understanding of 'real languiage'. We still have to maintain staff for digesting large volumes of information manually with related cost and risk of human errors. There is a need to speed up the process and digitize results to be able to make data a part of a digital process. Harvest reusable insight from extracted information as a by-product. Fundamentally, the initiative can also add traction to the collaborative effort of transforming the bank to a more tecnho-driven institution and illustrate opportunities in the field of machine learning and AI.     
 
-Compare agreements, ectract essence. 
+Exploring nlp opportunities does not imply that all hunam handling of text is expandable, there are numerous situations where we must have people rading and talking, but it is a start on a journey to a more digital bank.  
+
+#### Compare and analyse documents, ectract essence. 
 I go into the project with a moderate ambition of precision from the document analysis, but expect to be able to confirm the hypothesis stated in the three questions. For such a complicated field, a modest proof of concept is a good basis for believing in results from a possible full-scale project   
 
-Strategy for work:
+### Strategy for the work
 
 All text analysis, as other ML tasks, starts with understanding and preprocessing the data.
 
-Gathering and loading input data.
+#### Building more relevant skills
+
+Before starting to code, I will need some more knowledge. I have used the book 'Text Analysis -- * which I spent some time reading before start.  
+
+#### Gathering and loading input data.
 Assessing data - this is all about understanding the input and from this, the need of preprocessing 
+
+#### Preprocessing
 Preprocessing
+
+#### Transformation, training and produce results
 Transforming
 Train
+
+#### Inspect and assess
 Predict (etc)
 
 
