@@ -165,7 +165,7 @@ My list, as named in the file folder:
  'War_and_peace_tolstoy.rtf',
  'Wuthering_Heights_bronte.rtf'
 
-Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which i realized is available for all my books. The file naming was kept for the sake of convenience as the code reading the files was setup for the .rtf extension. 
+Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which i realized is available for all my books. The file naming was kept for the sake of convenience as the code reading the files was setup for the .rtf extension. All books are present in a folder in GitHub. 
 
 #### Comments on the book data
 
@@ -265,7 +265,12 @@ If I use the result from removing stopwords, the most frequent words for the ful
  ('thou', 8765)
 
 Looking at this list, I can recognize the words of literature objects and dialogue-oriented text, with 'said' on top of the lists.  
-The last word is a hint of the book's age and I guess this is a Shakesperian word. 
+The last word is a hint of the book's age and I guess this is a Shakespearian word. 
+
+Below is a figure showing the count of the 30 most common words in the corpus, after prereprocessing as described. 
+
+![image](https://user-images.githubusercontent.com/42574791/49156595-06981a00-f31e-11e8-8e8f-f7007265d8b9.png)
+
 
 Applying the word frequency on only Alice in Wonderland, without stopwords, we get this list: 
 ('alice', 173),
@@ -285,7 +290,7 @@ for 'The junglebook' , the 10  most frequent words when cleaned for filler words
 
 #### Recap - data cleaning in nlp
 
-Cleaning the corpus is done by several small cleaning code-snippets;
+Cleaning the corpus can be done by several small cleaning code-snippets;
 
 - sentence tokenization
 - word tokenizations
@@ -293,6 +298,10 @@ Cleaning the corpus is done by several small cleaning code-snippets;
 - converting all words to lowercase  
 - removing stopwords
 - lemmming and stemming
+- pos-tagging 
+
+The 5 first cleaning steps are described. The two latter were tested on the corpus, but not used for later transformation purposes. 
+Code for these tests are kept in the Notebook.  
 
 
 
@@ -317,12 +326,17 @@ Are the techniques to be used thoroughly discussed and justified?
 Is it made clear how the input data or datasets will be handled by the algorithms and techniques chosen?
 
 ### Benchmark
+
+A benchmark for performance for this project is somewhat challenging as the 'real-life' benchmark starts with time and cost for a person reading and understanding text. Such time-and cost values not often used as benchmark in these experiments. Nevertheless, these figures will be the basis for a business case if the solution is to be evaluated for a project, measured against the project costs.   
+With an average adult reading speed of 250 words per minute a book with 90.000 words (estimated average lenght of a novel) will be read in 360 minutes; 6 hours. For my bank case, a relevant comparison would be a document of perhaps 5000 words; estimated reading time being 20 minutes. The act of analysis and documenting the results will represent additional time and effort. Obviously, a machine-based read, classification and topic extract will represent a major performance increase.    
+
+If we rather see the benchmark as the 'first state of the solution' , to be compared to the final version the numbers will describe the model improvements. These improvments will be discussed.  
+
 In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
 Has some result or value been provided that acts as a benchmark for measuring performance?
 Is it clear how this result or value was obtained (whether by data or by hypothesis)?
 
 ## III. Methodology
-(approx. 3-5 pages)
 
 ### Data Preprocessing
 
