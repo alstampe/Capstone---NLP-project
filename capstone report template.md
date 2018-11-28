@@ -48,6 +48,9 @@ All text analysis, as other ML tasks, starts with understanding and preprocessin
 
 Before starting to code, I will need some more knowledge. I have used the book 'Text Analysis -- * which I spent some time reading before start.  
 
+![screenshot 7](https://user-images.githubusercontent.com/42574791/49142891-17369900-f2fa-11e8-9f87-83cfd2cf201f.png)
+
+
 #### Gathering and loading input data.
 Assessing data - this is all about understanding the input and from this, the need of preprocessing 
 
@@ -77,7 +80,12 @@ Is an anticipated solution clearly defined? Will the reader understand what resu
 
 ### Metrics
 
-As described in the capstone project proposal, the three parts of my project are all of a nature where sharp metrics   
+As described in the capstone project proposal, the three parts of my project are all of a nature where sharp metrics are not always present. The individual tasks may produce some comparable values, but more important is the subjective opinion ie: 
+
+'Is this a good topic extraction from the given book?'
+
+'Does the book similarity look sensible, given my knowledge of the books?'.       
+
 Similarity - words
 
 Similarity - books
@@ -93,7 +101,7 @@ Are the metrics you’ve chosen to measure the performance of your models clearl
 Have you provided reasonable justification for the metrics chosen based on the problem and solution?
 
 ## II. Analysis
-(approx. 2-4 pages)
+
 
 ### Data Exploration
 
