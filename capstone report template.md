@@ -46,29 +46,35 @@ All text analysis, as other ML tasks, starts with understanding and preprocessin
 
 #### Building more relevant skills
 
-Before starting to code, I will need some more knowledge. I have used the book 'Text Analysis -- * which I spent some time reading before start.  
+Before starting to code, I needed some more nlp-specific knowledge. I have used the Kindle book 'Text Analysis -- * which I spent some time reading before coding.  
 
 ![screenshot 7](https://user-images.githubusercontent.com/42574791/49142891-17369900-f2fa-11e8-9f87-83cfd2cf201f.png)
 
 
 #### Gathering and loading input data.
-Assessing data - this is all about understanding the input and from this, the need of preprocessing 
+Assessing data - this is all about finding, loading and understanding the input and from this, the need of preprocessing.
+Data source here is solely books from project Gutenberg.  
 
 #### Preprocessing
-Preprocessing
+Preprocessing text data is partly similar to celaning numerical and categorical data, partly very different. The options and choices are many, hence this step is impirtant and rquires some time.  
 
 #### Transformation, training and produce results
-Transforming
-Train
+Transforming the text data by vectorization, training the model and producing results will be more straightforward, but steps and methos must be appropriate to the case. 
 
 #### Inspect and assess
-Predict (etc)
+Results from transformation of text can be visualized in addition to list-based output.
 
 
+#### Test of an 'unknown' book
+Finally I will do a test on an ebook which is unknown and new. The test will be of the Topic extraction. 
 
+#### Evaluation
+Results will be discussed. 
 
+#### Deliverables
+Project deliverables will be in form of results described in the repost and code imbedded in the project Notebook. 
 
-
+The Notebook is quite extensive as it includes all code used for testing different ways to preprocess the text, not all are used for the final solution but has been important to learn more about the many ways to handle text data. 
 
 template q:
 In this section, you will want to clearly define the problem that you are trying to solve, including the strategy (outline of tasks) you will use to achieve the desired solution. You should also thoroughly discuss what the intended solution will be for this problem. Questions to ask yourself when writing this section:
@@ -82,19 +88,14 @@ Is an anticipated solution clearly defined? Will the reader understand what resu
 
 As described in the capstone project proposal, the three parts of my project are all of a nature where sharp metrics are not always present. The individual tasks may produce some comparable values, but more important is the subjective opinion ie: 
 
-'Is this a good topic extraction from the given book?'
+1) Similarity - words
+ - 'Does the word pairing examples on the vectorized data mase sense?'
 
-'Does the book similarity look sensible, given my knowledge of the books?'.       
+2) Similarity - books
+ - 'Does the book similarity look sensible, given my knowledge of the books?'.    
 
-Similarity - words
-
-Similarity - books
-
-Topic extraction
-
-
-
-
+3) Topic extraction
+ - 'Is this a good topic extraction from the given book?'
 
 In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
 Are the metrics you’ve chosen to measure the performance of your models clearly discussed and defined?
@@ -102,11 +103,10 @@ Have you provided reasonable justification for the metrics chosen based on the p
 
 ## II. Analysis
 
-
 ### Data Exploration
 
-Describing the data
-A Mini-library of 41 books collected from the project Gutenberg.
+#### Data description
+Data for the project is in the form of a mini-library of 41 books collected from the project Gutenberg.
 Project Gutenberg is a collection of freely available ebooks on various formats, forming a huge historical library of literature. 
 
 'Project Gutenberg offers over 57,000 free eBooks. Choose among free epub books, free kindle books, download them or read them online. You will find the world's great literature here, with focus on older works for which copyright has expired. Thousands of volunteers digitized and diligently proofread the eBooks, for enjoyment and education'. (From the website www.gutenberg.org)
@@ -114,7 +114,7 @@ Project Gutenberg is a collection of freely available ebooks on various formats,
 As a balance between corpus size and variety - and volume manageable for computation, I decided to use 41 books for my mimi-library. The choice of books is based on :
 
 - The books are all in english
-- 6 books have Norwegian origin (Ibsens pays and 2 faitytale collections)
+- 6 books have Norwegian origin (Ibsens pays and 2 fairytale collections)
 - Some of the items are plays (Ibsen, Shakespeare)
 - I have myself read all books - primarily wholly, but for some only partially,  (Shakespeares complete works, the Iliad)
 - Some authors are represented by several works (Verne, Ibsen, Dumas, Burroughs)
@@ -167,11 +167,11 @@ My list, as named in the file folder:
 
 Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which i realized is available for all my books. The file naming was kept for the sake of convenience as the code reading the files was setup for the .rtf extension. 
 
-Comments on the book data
+#### Comments on the book data
 
 - After a few assessments of the data on a word level I noticed some parts of the vocabulary that I did not expect from older works, such as 'email'. I had screened through the first part of most of the books to verify the content and format, which all seemed correct. At closer inspection I realized that all ebooks had a standard, quite long, section at the end, containing legal description of the ebook handling. In addition to the introduction of unwanted irrelevant vocabulary to the corpus this part is the same in all books and would therefore reduce the uniqueness of the items. The legal section was for this reason removed from each of the books.   
 
-- The complete volume of words form the books, the 'corpus' was analyzed thouroughly. 
+- The complete volume of words from the books, the 'corpus' was analyzed thouroughly. 
   There are many levels (and combination of levels) to look at the corpus;  
 
 - Corpus level
@@ -191,28 +191,32 @@ Vocab: 96909
 
 As a reflection 96909 comes across as a very rich vocabulary, even with Shakespeare and Ibsen onboard. One reason is probably that names are included in the corpus and are counted as words. Linguists state that if we include all varieties of known english words it will add up to ca 500.000. A normal active vocabulary consists of a modest 5-6000 words in most countries.    
 
-One of the first transforms on the corpus was done using the gensim.utils.simple_preprocess, which performs this : 'Convert a document into a list of lowercase tokens, ignoring tokens that are too short or too long'. https://programtalk.com/python-examples/gensim.utils.simple_preprocess/. On inspection this returns a compact list of tokens and the number of words is reduced significantly, ie for Alice in wonderland, from 53690 raw words to 9401 tokens. Netting down to unique tokens, in effect the 'token vocabulary' shows a modest token vocabulary of 1504.    
+One of the first transforms on the corpus was done using the gensim.utils.simple_preprocess, which performs this : 
+'Convert a document into a list of lowercase tokens, ignoring tokens that are too short or too long'.
+https://programtalk.com/python-examples/gensim.utils.simple_preprocess/. 
 
-Although libraries with opsion as 'simple_preprocess' is useful, I wanted to test effects of the tokenizers in detail, and spent time trying out different varietier on sentence and word levels. 
+On inspection this returns a compact list of tokens, the number of words reduced significantly, ie for Alice in wonderland, from 53690 raw words to 9401 tokens. Netting down to unique tokens, in effect the 'token vocabulary' shows a modest token vocabulary of 1504.    
+
+Although utilities with options such as the 'simple_preprocess' are useful, I wanted to test effects of the preprocessing in detail, and spent time trying out different functions on sentence and word levels, coding small functions with basic tokenizers and cleaning. 
 
 #### Assessing different word_tokenizers
 
-Tokenizers in common librares present some different handling of the text. I tested the different outcomes of two often used word tokenizers applied on sentences created from the sentence_tokenizer; 
+Tokenizers in common utility libraries offers a variety of processing option. I tested the different outcomes of two often used word tokenizers applied on sentences created from the punct_sentence_tokenizer; 
 
 nltk.tokenize.word_tokenize(sentence) versus nltk.tokenize.wordpunct_tokenize(sentence)
-For sentence no:99 in the Alice corpus we can see how the word tokenizers differ, respectively:
+For sentence no:99 in the Alice in Wonderland corpus we can see how the word tokenizers differ, respectively:
 
 ('she was up to her chin in salt-water.',
  ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt-water', '.'],
  ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt', '-', 'water', '.'])
 
-The word_tokenizer keeps the hyphenated words as one token, the wordpunct_tokenize splits these words into 3 separate tokens.  when analyzing text in literary works, it makes sense to keep the original word as written by the author, this sentence is a good example as the words 'salt' and 'water' separately is quite different from 'salt-water'.  The first could be a part of a recipe for baking bread, the second indicates seawater - or tears. 
+The word_tokenizer keeps the hyphenated words as one token, the wordpunct_tokenize splits these words into 3 separate tokens.  When analyzing text in literary works, it makes sense to keep the original word as written by the author, this sentence is a good example as the words 'salt' and 'water' separately is quite different from 'salt-water'.  The first could be a part of a recipe for baking bread, the second indicates seawater - or tears, as is the case in this story. 
 
-I choose to use the word tokenizer for this book-based project, although another context could be a case for choosing the  wordpunct_tokenizer. 
+I choose to use the word_tokenizer for this book-based project, although another context could be a case for choosing the  wordpunct_tokenizer. 
 
 #### Cleaning the sentences for stopwords
 
-When preparing for topic analysis and other content assessments we want to look at the menaingful parts of the text, not the 'filler words'. There are many lists of 'filler words' for several lanuages, I use a list of english 'stop words' and write two small code snippets to remove these words in a sentence and then loop for all sentences in a book. The function 'make-fin-sent' will 'make final sentences' for a given book, to be used for topic extraction: 
+When preparing for topic analysis and other content assessments we want to look at the meaningful elements of the text, not the 'filler words'. There are many lists of 'filler words' or 'stop words' as they are called, for several lanuages. I use a list of english 'stop words' (from the nltk.corpus) and write two small code snippets to remove these words in a sentence and then loop for all sentences in a book. The function 'make-fin-sent' will 'make final sentences' for a given book, to be used for topic extraction: 
 
 def remove_stopwords(words):
        return [word for word in words if word not in stop_words]
@@ -222,24 +226,32 @@ def make_fin_sent(sent_in):
     for sent in sent_in:
         fin_sent.append(remove_stopwords(sent))
     return fin_sent
+    
+A final sentence wil typically look like this (sentence no 80 in Swanns Way):     
+    
+['Come', 'stop', 'husband', 'drinking', 'brandy']
 
 
 #### Looking at frequent words in a text
 
-
-Zooming on on my corpus the need for data cleaning soon becomes obvious. First try of 'most common words' on a raw (uncleaned) corpus returns a rather uninteresting list over the 10 most frequent 'words', using FreqDist
+Zooming on on the corpus the need for data cleaning soon becomes obvious. First try of 'most common words' on a raw (uncleaned) corpus returns a rather uninteresting list over the 10 most frequent 'words', using FreqDist (from nltk.probability import FreqDist)
 
 ({',': 460770, 'the': 270580, '.': 258286, 'and': 160660, 'of': 143300, 'to': 142159, 'a': 95923, 'I': 91671, 'in': 78754, 'that': 71929, ...})
 
-Removing punctiations and single characters improves a little
+Removing punctiations and single characters with a small cleaning function improves a little
+
+cleanlist=[]
+def sentence_to_cleanlist(raw):
+    cleanlist = re.sub("[^a-zA-Z]"," ", raw)
+    return cleanlist
 
 ({'the': 270904, 'and': 161240, 'to': 143756, 'of': 143437, 'a': 96535, 'I': 92847, 'in': 79205, 'that': 72439, 'he': 64047, 'his': 58524, ...})
 
 This exercize can be done for the individual books, but across english books the top 20 words pretty much remains the same. 
 
-Next step would be to remove 'stop words', the most common filler words. 
+Next step is be to remove the stop words, as decribed above. 
 
-If I use the result form removing stopwords, the most frequent words for the full corpus are:
+If I use the result from removing stopwords, the most frequent words for the full corpus are:
 
 ('said', 19290),
  ('one', 17840),
@@ -252,9 +264,10 @@ If I use the result form removing stopwords, the most frequent words for the ful
  ('know', 8822),
  ('thou', 8765)
 
-Looking at this list, I can recognize the words of literaure objects and dialogue-oriented text. Tha last word is a hint of the book's age and I guess this is a Shakesperian word. 
+Looking at this list, I can recognize the words of literature objects and dialogue-oriented text, with 'said' on top of the lists.  
+The last word is a hint of the book's age and I guess this is a Shakesperian word. 
 
-Applying the word frequency on Alice without stopwords, we get this list: 
+Applying the word frequency on only Alice in Wonderland, without stopwords, we get this list: 
 ('alice', 173),
  ('said', 144),
  ('little', 59),
@@ -266,9 +279,9 @@ Applying the word frequency on Alice without stopwords, we get this list:
  ('mouse', 27),
  ('illustration', 26)
 
-for 'The junglebook' , the10  most frequest words when cleaned for filler words are (using FreqDist):
+for 'The junglebook' , the 10  most frequent words when cleaned for filler words are (using FreqDist again):
 
-({'said': 430, 'little': 231, 'mowgli': 220, 'man': 177, 'one': 174, 'would': 162, 'jungle': 147, 'head': 137, 'bagheera': 129, 'could': 125, ...})
+'said': 430, 'little': 231, 'mowgli': 220, 'man': 177, 'one': 174, 'would': 162, 'jungle': 147, 'head': 137, 'bagheera': 129, 'could': 125, 
 
 #### Recap - data cleaning in nlp
 
