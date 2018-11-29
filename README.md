@@ -14,6 +14,7 @@ Complete description of the project
 #### Book files
 
 All .txt files in the book library that forms the project corpus
+NB:They are referred to as having .rtf names in the report, the corresponding code will have to be adjusted, or use the code version written for .txt filenames
 
 42 books
 1 document for test purposes
