@@ -1,48 +1,37 @@
-Machine Learning Engineer Nanodegree
+DNB Data Scientist for Enterprise Nanodegree Program
 ## Capstone Project
-Anne Line Stampe DNB
-December 8th, 2018
+Anne Line Stampe, DNB
+NOvember 30th, 2018
 
 ## I. Definition
 
 ## Project Overview
-Natural Language Processing (NLP) is a higly relevant topic in many business areas, and specifically so within DNB (where I work), Norways largest financial institution. The need for rapidly increasing levels of automation and digitalization spurs a demand for ways to reengineer processes based on manual handling of unstructured data. In addition to reduce costs and risk there is a clearly stated ambition to gain and use data-driven insight from these initiatives. 
+Natural Language Processing (NLP) is a higly relevant topic in many business areas, and specifically so within DNB, Norways largest financial institution. The need for rapidly increasing levels of automation and digitalization spurs a demand for ways to reengineer processes based on manual handling of unstructured data. In addition to reduce costs and risks there is a clearly stated ambition to gain and use data-driven insight from these initiatives. 
 
-With a background from participation in OCR-project piloting recently I chose a NLP-case as my Capstone project, uniting freshy aquired skills and an interest in real-life document analysis. 
+With a background from participation in an OCR-project piloting recently I chose a NLP-case as my Capstone project, uniting freshy aquired skills in the Nanodegree program and an interest in real-life document analysis. 
 
-NLP was briefly introduced in the Nanodegree course
+NLP was briefly introduced in the Nanodegree course, giving a basis for this project. 
 
-My focus is to build skills and insights on possible solutions for analysis of text in form of full-scale documents rather than emails, tweets or other short, informal text objects. The data used in the project is text from 41 full books from the GUtenmebrg project. For test purposes an additional unknown book will be used at the end of the project.  
+My focus is to build skills and insights in possible realistic solutions for analysis of text in form of full-scale documents rather than emails, tweets or other short, informal text objects. The data used in the project is text from 41 full books from the Project Gutenberg. For test purposes an additional unknown book and a separate text document is introduced at the end of the project.  
 
-NLP covers a wide variety of methods, tools and theories.
+As described in the project proposal my project covers three topics;
 
-As described in the project proposal my project addresses three challenges;
-
-- Analysis of words in a full corpus; vocabulary, density, vector representation etc
+- Analysis of words in a full corpus; vocabulary, vector representation, word similarity
 - Methods for comparing individual text objects (books) for similarity based on vector representation
 - Methods for topic extraction from text objects, on a book level
 
-In addition to these three specific issues, I want to gain more insight into the NLP field in general from the project.
-
-The project has a high relevance for my job; we want to be able to understand documents by assessing vocabulary, comparing documents and extracting topics with algorithms as an alterative to humans reading and assessing the texts. There is also a need to be able to isolate specific data elements from documents (names, account numbers, values etc), but this is not a part of the Capstone scope. 
-I plan to try out the project code on internal documents later. 
-
-
-In this section, look to provide a high-level overview of the project in layman’s terms. Questions to ask yourself when writing this section:
-Has an overview of the project been provided, such as the problem domain, project origin, and related datasets or input data?
-Has enough background information been given so that an uninformed reader would understand the problem domain and following problem statement?
+The project has a high relevance for my job; in DNB we want to be able to understand documents by assessing vocabulary, comparing documents and extracting topics with algorithms as an alternative to a 100% manual reading and understandig the texts. There is also a need to be able to isolate specific data elements from documents (names, account numbers, values etc), but this is not a part of the Capstone scope. Because of this internal relevance, I plan to try out the project code on internal documents later. 
 
 ### Problem Statement
-The underlying problem I want to addreess is the challenge we face when automating our prorcesses in the bank; some tasks are by nature based on non-numerical data and the understanding of 'real languiage'. We still have to maintain staff for digesting large volumes of information manually with related cost and risk of human errors. There is a need to speed up the process and digitize results to be able to make data a part of a digital process. Harvest reusable insight from extracted information as a by-product. Fundamentally, the initiative can also add traction to the collaborative effort of transforming the bank to a more tecnho-driven institution and illustrate opportunities in the field of machine learning and AI.     
+The underlying problem I want to addreess is the challenge we face when automating our processes in the bank; some tasks are by nature based on non-numerical data and the understanding of 'real language'. We still have to maintain sizeable staff for digesting large volumes of information manually with related cost and risk of human errors. There is a need to speed up the process and digitize results to be able to make data a part of a digital process. To harvest reusable insight from extracted information is a by-product. Fundamentally, the initiative can also add traction to the collaborative effort of transforming the bank to a more tecnho-driven institution and illustrate opportunities in the field of machine learning and AI.     
 
-Exploring nlp opportunities does not imply that all hunam handling of text is expandable, there are numerous situations where we must have people rading and talking, but it is a start on a journey to a more digital bank.  
+Exploring NLP opportunities does not imply that all human handling of text is expandable, there are numerous situations where we must have people reading and analyzind text based on more non-procedural rules, but it is a start on a journey to a more digital bank.  
 
-#### Compare and analyse documents, ectract essence. 
-I go into the project with a moderate ambition of precision from the document analysis, but expect to be able to confirm the hypothesis stated in the three questions. For such a complicated field, a modest proof of concept is a good basis for believing in results from a possible full-scale project   
+I go into this project with a moderate ambition of precision from the document analysis, but expect to be able to confirm the hypothesis stated in the three questions. For such a complicated field, a modest proof of concept is a good basis for believing in results from a possible full-scale project later.    
 
 ### Strategy for the work
 
-All text analysis, as other ML tasks, starts with understanding and preprocessing the data.
+All text analysis, as other ML tasks, starts with understanding the data, the questions asked and the tools and methods available to answer the questions with available data.
 
 #### Building more relevant skills
 
@@ -52,44 +41,37 @@ Before starting to code, I needed some more nlp-specific knowledge. I have used 
 
 
 #### Gathering and loading input data.
-Assessing data - this is all about finding, loading and understanding the input and from this, the need of preprocessing.
-Data source here is solely books from project Gutenberg.  
+The data for this project is solely books from Project Gutenberg, with the exeption of a single document to be testet at the very end of the project. All books will be downloaded on my laptop and then uploaded to my Notebook, to be read into dataobjects.    
 
 #### Preprocessing
-Preprocessing text data is partly similar to celaning numerical and categorical data, partly very different. The options and choices are many, hence this step is impirtant and rquires some time.  
+Preprocessing text data is partly similar to cleaning numerical and categorical data, partly very different. The options and choices are many, hence this step is important and represents a large part of the projects time and effort. Preprocessing code for all three parts of the project scope will be prepared and tested before the data transformation starts.      
 
 #### Transformation, training and produce results
-Transforming the text data by vectorization, training the model and producing results will be more straightforward, but steps and methos must be appropriate to the case. 
+Transforming the text data by establishing models, vectorization, dimensionality reduction, training the model and producing results will be more straightforward and similar to numerical-oriented projects, but steps and methods must be appropriate to the case and results visualized to inpect language-oriented elements. 
 
 #### Inspect and assess
 Results from transformation of text can be visualized in addition to list-based output.
 
-
-#### Test of an 'unknown' book
-Finally I will do a test on an ebook which is unknown and new. The test will be of the Topic extraction. 
+#### Test of an 'unknown' additional book from Gutenberg and a contemporary text document
+Finally I will do a test on an ebook and a text document which are both unknown and new. The test will be of the Topic extraction. 
 
 #### Evaluation
 Results will be discussed. 
 
 #### Deliverables
-Project deliverables will be in form of results described in the repost and code imbedded in the project Notebook. 
+Project deliverables will primarily be in form of results described in the report with detailed descripiton of code, models and figures. All results are commented and discussed. 
 
-The Notebook is quite extensive as it includes all code used for testing different ways to preprocess the text, not all are used for the final solution but has been important to learn more about the many ways to handle text data. 
+In addition all code, test and comments are present in the project Notebook. All books reside here on GitHub.  
 
-template q:
-In this section, you will want to clearly define the problem that you are trying to solve, including the strategy (outline of tasks) you will use to achieve the desired solution. You should also thoroughly discuss what the intended solution will be for this problem. Questions to ask yourself when writing this section:
-Is the problem statement clearly defined? Will the reader understand what you are expecting to solve?
-Have you thoroughly discussed how you will attempt to solve the problem?
-Is an anticipated solution clearly defined? Will the reader understand what results you are looking for?
-
-
+The Notebook is quite extensive as it includes all code used for testing different ways to preprocess the text, plus some vectorization attempts which I did not utilize: Hence, no not every part of the Notebook is used for the final solution but has been important to learn more about the many ways to handle text data. 
 
 ### Metrics
 
-As described in the capstone project proposal, the three parts of my project are all of a nature where sharp metrics are not always present. The individual tasks may produce some comparable values, but more important is the subjective opinion ie: 
+As described in the capstone project proposal, the three parts of my project are all of a nature where sharp metrics are not always present. The individual tasks will produce some comparable values, but more important is the subjective opinion ie: 
 
 1) Similarity - words
- - 'Does the word pairing examples on the vectorized data mase sense?'
+ - 'Are the similarity suggestions on single words correct according to my language understanding'?
+ - 'Does the word pairing examples on the vectorized data make sense?'
 
 2) Similarity - books
  - 'Does the book similarity look sensible, given my knowledge of the books?'.    
@@ -97,28 +79,23 @@ As described in the capstone project proposal, the three parts of my project are
 3) Topic extraction
  - 'Is this a good topic extraction from the given book?'
 
-In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
-Are the metrics you’ve chosen to measure the performance of your models clearly discussed and defined?
-Have you provided reasonable justification for the metrics chosen based on the problem and solution?
-
 ## II. Analysis
 
-### Data Exploration
+### Data Exploration and description
 
-#### Data description
-Data for the project is in the form of a mini-library of 41 books collected from the project Gutenberg.
+Data for the project is in the form of a 'mini-library' of 41 books collected from the project Gutenberg.
 Project Gutenberg is a collection of freely available ebooks on various formats, forming a huge historical library of literature. 
 
 'Project Gutenberg offers over 57,000 free eBooks. Choose among free epub books, free kindle books, download them or read them online. You will find the world's great literature here, with focus on older works for which copyright has expired. Thousands of volunteers digitized and diligently proofread the eBooks, for enjoyment and education'. (From the website www.gutenberg.org)
 
-As a balance between corpus size and variety - and volume manageable for computation, I decided to use 41 books for my mimi-library. The choice of books is based on :
+As a balance between informative corpus size and variety - and a volume manageable for computation on a standard laptop - I decided to use 41 books for my mimi-library. The choice of books is based on :
 
 - The books are all in english
-- 6 books have Norwegian origin (Ibsens pays and 2 fairytale collections)
+- 6 books have Norwegian or Danish origin (Ibsens plays and 2 fairytale collections)
 - Some of the items are plays (Ibsen, Shakespeare)
-- I have myself read all books - primarily wholly, but for some only partially,  (Shakespeares complete works, the Iliad)
+- I have personally read all books - primarily wholly, but for some only partially,  (Shakespeares complete works, the Iliad)
 - Some authors are represented by several works (Verne, Ibsen, Dumas, Burroughs)
-- Nearly half of the items can be described as 'journey tales'.
+- Nearly half of the items can be described as 'adventure journey tales'.
 - Two of the authors (Shakespeare and Ibsen) are known for their very rich vocabulary, said to be 29.000 and 27.000 respectively.  
 
 My list, as named in the file folder:
@@ -133,7 +110,7 @@ My list, as named in the file folder:
  'Fairytales_H_C_Andersen.rtf',
  'Ghosts_Ibsen.rtf',
  'Great_Expectations_by_Charles_Dickens.rtf',
- 'Gullivers_Travels_Defoe.rtf',
+ 'Gullivers_Travels_Swift.rtf',
  'Hedda_Gabler_Ibsen .rtf',
  'Iliad_Homer.rtf',
  'Jungle_tales_of_Tarzan.rtf',
@@ -165,11 +142,11 @@ My list, as named in the file folder:
  'War_and_peace_tolstoy.rtf',
  'Wuthering_Heights_bronte.rtf'
 
-Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which i realized is available for all my books. The file naming was kept for the sake of convenience as the code reading the files was setup for the .rtf extension. All books are present in a folder in GitHub. 
+Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which I realized is available for all my books. The file naming was kept for the sake of convenience as the code reading the files was setup for the .rtf extension. All books are present in a folder in GitHub. 
 
 #### Comments on the book data
 
-- After a few assessments of the data on a word level I noticed some parts of the vocabulary that I did not expect from older works, such as 'email'. I had screened through the first part of most of the books to verify the content and format, which all seemed correct. At closer inspection I realized that all ebooks had a standard, quite long, section at the end, containing legal description of the ebook handling. In addition to the introduction of unwanted irrelevant vocabulary to the corpus this part is the same in all books and would therefore reduce the uniqueness of the items. The legal section was for this reason removed from each of the books.   
+- After a few assessments of the data on a word level I noticed some parts of the vocabulary that I did not expect from older works, such as 'email'. I had screened through the first part of most of the books to verify the content and format, which all seemed correct. At closer inspection I realized that all ebooks had a standard, quite long, section at the end, containing legal description of the ebook handling. In addition to the introduction of unwanted irrelevant vocabulary to the corpus this part is the same in all books and would therefore reduce the uniqueness of the items. The section was for this reason removed from each of the books.   
 
 - The complete volume of words from the books, the 'corpus' was analyzed thouroughly. 
   There are many levels (and combination of levels) to look at the corpus;  
@@ -187,7 +164,7 @@ Below is an example of numbers for these levels
 Corpus_raw: 30776216
 Wordlist: 5572533
 Sentences: 309218
-Vocab: 96909
+Vocabulary: 96909
 
 As a reflection 96909 comes across as a very rich vocabulary, even with Shakespeare and Ibsen onboard. One reason is probably that names are included in the corpus and are counted as words. Linguists state that if we include all varieties of known english words it will add up to ca 500.000. A normal active vocabulary consists of a modest 5-6000 words in most countries.    
 
@@ -201,22 +178,22 @@ Although utilities with options such as the 'simple_preprocess' are useful, I wa
 
 #### Assessing different word_tokenizers
 
-Tokenizers in common utility libraries offers a variety of processing option. I tested the different outcomes of two often used word tokenizers applied on sentences created from the punct_sentence_tokenizer; 
+Tokenizers in common utility libraries offers a variety of processing options. As an illustrative example, I tested the different outcomes of two often used word tokenizers applied on sentences created from the punct_sentence_tokenizer; 
 
 nltk.tokenize.word_tokenize(sentence) versus nltk.tokenize.wordpunct_tokenize(sentence)
 For sentence no:99 in the Alice in Wonderland corpus we can see how the word tokenizers differ, respectively:
 
-('she was up to her chin in salt-water.',
+ 'she was up to her chin in salt-water.',
  ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt-water', '.'],
- ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt', '-', 'water', '.'])
+ ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt', '-', 'water', '.']
 
 The word_tokenizer keeps the hyphenated words as one token, the wordpunct_tokenize splits these words into 3 separate tokens.  When analyzing text in literary works, it makes sense to keep the original word as written by the author, this sentence is a good example as the words 'salt' and 'water' separately is quite different from 'salt-water'.  The first could be a part of a recipe for baking bread, the second indicates seawater - or tears, as is the case in this story. 
 
-I choose to use the word_tokenizer for this book-based project, although another context could be a case for choosing the  wordpunct_tokenizer. 
+I choose to use the word_tokenizer for this book-based project, although another context could be a case for preferring the  wordpunct_tokenizer. Use of hyphenation varies between languages, is said to be declining in the English language and is less common in Norwegian. 
 
 #### Cleaning the sentences for stopwords
 
-When preparing for topic analysis and other content assessments we want to look at the meaningful elements of the text, not the 'filler words'. There are many lists of 'filler words' or 'stop words' as they are called, for several lanuages. I use a list of english 'stop words' (from the nltk.corpus) and write two small code snippets to remove these words in a sentence and then loop for all sentences in a book. The function 'make-fin-sent' will 'make final sentences' for a given book, to be used for topic extraction: 
+When preparing for topic analysis and other content assessments we want to look at the meaningful elements of the text, not the 'filler words'. There are many lists of 'filler words' or 'stop words' as they are called, for several languages. I use a list of english 'stop words' (from the nltk.corpus) and write two small code snippets to remove these words in a sentence and then loop for all sentences in a book. The function 'make-fin-sent' (below) will 'make final sentences' for a given book, to be used for topic extraction where we want to avoid stopwords: 
 
 def remove_stopwords(words):
        return [word for word in words if word not in stop_words]
@@ -227,18 +204,18 @@ def make_fin_sent(sent_in):
         fin_sent.append(remove_stopwords(sent))
     return fin_sent
     
-A final sentence wil typically look like this (sentence no 80 in Swanns Way):     
+A final sentence will typically look like this (sentence no 80 in Swanns Way):     
     
 ['Come', 'stop', 'husband', 'drinking', 'brandy']
 
 
 #### Looking at frequent words in a text
 
-Zooming on on the corpus the need for data cleaning soon becomes obvious. First try of 'most common words' on a raw (uncleaned) corpus returns a rather uninteresting list over the 10 most frequent 'words', using FreqDist (from nltk.probability import FreqDist)
+Zooming on on the corpus, the need for data cleaning soon becomes obvious. First try of 'most common words' on a raw (uncleaned) corpus returns a rather uninteresting list over the 10 most frequent 'words', using FreqDist (from nltk.probability import FreqDist).
 
 ({',': 460770, 'the': 270580, '.': 258286, 'and': 160660, 'of': 143300, 'to': 142159, 'a': 95923, 'I': 91671, 'in': 78754, 'that': 71929, ...})
 
-Removing punctiations and single characters with a small cleaning function improves a little
+Removing punctiations and single characters with a small cleaning function improves a little:
 
 cleanlist=[]
 def sentence_to_cleanlist(raw):
@@ -249,9 +226,9 @@ def sentence_to_cleanlist(raw):
 
 This exercize can be done for the individual books, but across english books the top 20 words pretty much remains the same. 
 
-Next step is be to remove the stop words, as decribed above. 
+Next step is be to remove the stop words, as decribed above. We discover that all 10 words on the previous list were in fact stopwords.
 
-If I use the result from removing stopwords, the most frequent words for the full corpus are:
+Using the result from removing stopwords with make_fin_sent, the10 most frequent words for the full corpus are:
 
 ('said', 19290),
  ('one', 17840),
@@ -301,20 +278,12 @@ Cleaning the corpus can be done by several small cleaning code-snippets;
 - pos-tagging 
 
 The 5 first cleaning steps are described. The two latter were tested on the corpus, but not used for later transformation purposes. 
-Code for these tests are kept in the Notebook.  
-
-
-
-
-
-
-In this section, you will be expected to analyze the data you are using for the problem. This data can either be in the form of a dataset (or datasets), input data (or input files), or even an environment. The type of data should be thoroughly described and, if possible, have basic statistics and information presented (such as discussion of input features or defining characteristics about the input or environment). Any abnormalities or interesting qualities about the data that may need to be addressed have been identified (such as features that need to be transformed or the possibility of outliers). Questions to ask yourself when writing this section:
-If a dataset is present for this problem, have you thoroughly discussed certain features about the dataset? Has a data sample been provided to the reader?
-If a dataset is present for this problem, are statistics about the dataset calculated and reported? Have any relevant results from this calculation been discussed?
-If a dataset is not present for this problem, has discussion been made about the input space or input data for your problem?
-Are there any abnormalities or characteristics about the input space or dataset that need to be addressed? (categorical variables, missing values, outliers, etc.)
+Code for these tests are still kept in the Notebook.  
 
 ### Exploratory Visualization
+
+Word frequency after different word preprocesses is interesting. Below are some more plots describing this, showing number of words in the whole corpus or in separate books. All are cleaned by normalization (removing stray characters), some are cleaned for stopwords.  
+
 In this section, you will need to provide some form of visualization that summarizes or extracts a relevant characteristic or feature about the data. The visualization should adequately support the data being used. Discuss why this visualization was chosen and how it is relevant. Questions to ask yourself when writing this section:
 Have you visualized a relevant characteristic or feature about the dataset or input data?
 Is the visualization thoroughly analyzed and discussed?
