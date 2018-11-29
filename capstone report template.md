@@ -231,9 +231,9 @@ Removing punctiations and single characters with a small cleaning function impro
 
 This exercize can be done for the individual books, but across english books the top 20 words pretty much remains the same. 
 
-Next step is be to remove the stop words, as described above. We discover that all 10 words on the previous list were in fact stopwords.
+Next step is to remove the stop words, as described above. We can see that all 10 words on the previous list were in fact stopwords.
 
-Using the result from removing stopwords with make_fin_sent, the10 most frequent words for the full corpus are:
+Using the result from removing stopwords with make_fin_sent, the 10 most frequent words for the full corpus are:
 
     ('said', 19290),
     ('one', 17840),
