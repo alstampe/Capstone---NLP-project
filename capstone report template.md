@@ -6,36 +6,36 @@ NOvember 30th, 2018
 ## I. Definition
 
 ## Project Overview
-Natural Language Processing (NLP) is a higly relevant topic in many business areas, and specifically so within DNB, Norways largest financial institution. The need for rapidly increasing levels of automation and digitalization spurs a demand for ways to reengineer processes based on manual handling of unstructured data. In addition to reduce costs and risks there is a clearly stated ambition to gain and use data-driven insight from these initiatives. 
+Natural Language Processing (NLP) is a highly relevant topic in many business areas, and specifically so within DNB, Norways largest financial institution. The need for rapidly increasing levels of automation and digitalization spurs a demand for ways to reengineer processes based on manual handling of unstructured data. In addition to reduce costs and risks there is a clearly stated ambition to gain and use data-driven insight from these initiatives. 
 
 With a background from participation in an OCR-project piloting recently I chose a NLP-case as my Capstone project, uniting freshy aquired skills in the Nanodegree program and an interest in real-life document analysis. 
 
-NLP was briefly introduced in the Nanodegree course, giving a basis for this project. 
+NLP was briefly introduced in the Nanodegree course, giving a usefuil basis for this project. 
 
-My focus is to build skills and insights in possible realistic solutions for analysis of text in form of full-scale documents rather than emails, tweets or other short, informal text objects. The data used in the project is text from 41 full books from the Project Gutenberg. For test purposes an additional unknown book and a separate text document is introduced at the end of the project.  
+My focus is to build skills and insights in possible realistic solutions for analysis of text in the form of full-scale documents rather than emails, tweets or other short, informal text objects. The data used in the project is text from 41 full books from the Project Gutenberg. For test purposes an additional unknown book and a separate text document is introduced at the end of the project.  
 
 As described in the project proposal my project covers three topics;
 
-- Analysis of words in a full corpus; vocabulary, vector representation, word similarity
-- Methods for comparing individual text objects (books) for similarity based on vector representation
-- Methods for topic extraction from text objects, on a book level
+    Analysis of words in a full corpus; vocabulary, vector representation, word similarity
+    Methods for comparing individual text objects (books) for similarity based on vector representation
+    Methods for topic extraction from text objects, on a book level
 
 The project has a high relevance for my job; in DNB we want to be able to understand documents by assessing vocabulary, comparing documents and extracting topics with algorithms as an alternative to a 100% manual reading and understandig the texts. There is also a need to be able to isolate specific data elements from documents (names, account numbers, values etc), but this is not a part of the Capstone scope. Because of this internal relevance, I plan to try out the project code on internal documents later. 
 
 ### Problem Statement
-The underlying problem I want to addreess is the challenge we face when automating our processes in the bank; some tasks are by nature based on non-numerical data and the understanding of 'real language'. We still have to maintain sizeable staff for digesting large volumes of information manually with related cost and risk of human errors. There is a need to speed up the process and digitize results to be able to make data a part of a digital process. To harvest reusable insight from extracted information is a by-product. Fundamentally, the initiative can also add traction to the collaborative effort of transforming the bank to a more tecnho-driven institution and illustrate opportunities in the field of machine learning and AI.     
+The underlying problem I want to address is the challenge we face when automating our processes in the bank; some tasks are by nature based on non-numerical data and the understanding of 'real language'. We still have to maintain sizeable staff for digesting large volumes of information manually with related cost and risk of human errors. There is a need to speed up the process and digitize results to be able to make data a part of a digital process. To harvest reusable insight from extracted information would be a valuable by-product. Fundamentally, the initiative can also add traction to the collaborative effort of transforming the bank to a more tecnho-driven institution and illustrate opportunities in the field of machine learning and AI.     
 
-Exploring NLP opportunities does not imply that all human handling of text is expandable, there are numerous situations where we must have people reading and analyzind text based on more non-procedural rules, but it is a start on a journey to a more digital bank.  
+Exploring NLP opportunities does not imply that all human handling of text is expandable, there are numerous situations where we must have skilled people reading and analyzing text based on more non-procedural rules, but it is a start on a journey to a more digital bank.  
 
 I go into this project with a moderate ambition of precision from the document analysis, but expect to be able to confirm the hypothesis stated in the three questions. For such a complicated field, a modest proof of concept is a good basis for believing in results from a possible full-scale project later.    
 
 ### Strategy for the work
 
-All text analysis, as other ML tasks, starts with understanding the data, the questions asked and the tools and methods available to answer the questions with available data.
+All text analysis, as other ML tasks, starts with understanding the data, the questions asked and the tools and methods needed to answer the questions with available data.
 
 #### Building more relevant skills
 
-Before starting to code, I needed some more nlp-specific knowledge. I have used the Kindle book 'Text Analysis -- * which I spent some time reading before coding.  
+Before starting to code, I needed some more nlp-specific knowledge. I have used the Kindle book below which I spent some time reading before getting at the coding part.  
 
 ![screenshot 7](https://user-images.githubusercontent.com/42574791/49142891-17369900-f2fa-11e8-9f87-83cfd2cf201f.png)
 
@@ -46,8 +46,8 @@ The data for this project is solely books from Project Gutenberg, with the exept
 #### Preprocessing
 Preprocessing text data is partly similar to cleaning numerical and categorical data, partly very different. The options and choices are many, hence this step is important and represents a large part of the projects time and effort. Preprocessing code for all three parts of the project scope will be prepared and tested before the data transformation starts.      
 
-#### Transformation, training and produce results
-Transforming the text data by establishing models, vectorization, dimensionality reduction, training the model and producing results will be more straightforward and similar to numerical-oriented projects, but steps and methods must be appropriate to the case and results visualized to inpect language-oriented elements. 
+#### Transformation, training and producing results
+Transforming the text data by establishing models, vectorization, dimensionality reduction, training the model and producing results will be more straightforward and similar to numerical-oriented projects, but steps and methods must be appropriate to the case and results visualized to inspect language-oriented elements. 
 
 #### Inspect and assess
 Results from transformation of text can be visualized in addition to list-based output.
@@ -61,7 +61,7 @@ Results will be discussed.
 #### Deliverables
 Project deliverables will primarily be in form of results described in the report with detailed descripiton of code, models and figures. All results are commented and discussed. 
 
-In addition all code, test and comments are present in the project Notebook. All books reside here on GitHub.  
+In addition all code, test and comments are present in the project Notebook. All books reside on GitHub.  
 
 The Notebook is quite extensive as it includes all code used for testing different ways to preprocess the text, plus some vectorization attempts which I did not utilize: Hence, no not every part of the Notebook is used for the final solution but has been important to learn more about the many ways to handle text data. 
 
@@ -70,14 +70,14 @@ The Notebook is quite extensive as it includes all code used for testing differe
 As described in the capstone project proposal, the three parts of my project are all of a nature where sharp metrics are not always present. The individual tasks will produce some comparable values, but more important is the subjective opinion ie: 
 
 1) Similarity - words
- - 'Are the similarity suggestions on single words correct according to my language understanding'?
- - 'Does the word pairing examples on the vectorized data make sense?'
+    'Are the similarity suggestions on single words correct according to my language understanding'?
+    'Does the word pairing examples on the vectorized data make sense?'
 
 2) Similarity - books
- - 'Does the book similarity look sensible, given my knowledge of the books?'.    
+    'Does the book similarity look sensible, given my knowledge of the books?'.    
 
 3) Topic extraction
- - 'Is this a good topic extraction from the given book?'
+    'Is this a readable and good topic extraction from the given book?'
 
 ## II. Analysis
 
@@ -90,81 +90,81 @@ Project Gutenberg is a collection of freely available ebooks on various formats,
 
 As a balance between informative corpus size and variety - and a volume manageable for computation on a standard laptop - I decided to use 41 books for my mimi-library. The choice of books is based on :
 
-- The books are all in english
-- 6 books have Norwegian or Danish origin (Ibsens plays and 2 fairytale collections)
-- Some of the items are plays (Ibsen, Shakespeare)
-- I have personally read all books - primarily wholly, but for some only partially,  (Shakespeares complete works, the Iliad)
-- Some authors are represented by several works (Verne, Ibsen, Dumas, Burroughs)
-- Nearly half of the items can be described as 'adventure journey tales'.
-- Two of the authors (Shakespeare and Ibsen) are known for their very rich vocabulary, said to be 29.000 and 27.000 respectively.  
+    The books are all in english
+    6 books have Norwegian or Danish origin (Ibsens plays and 2 fairytale collections)
+    Some of the items are plays (Ibsen, Shakespeare)
+    I have personally read all books - primarily wholly, but for some only partially,  (Shakespeares complete works, the Iliad)
+    Some authors are represented by several works (Verne, Ibsen, Dumas, Burroughs)
+    Nearly half of the items can be described as 'adventure journey tales'.
+    Two of the authors (Shakespeare and Ibsen) are known for their very rich vocabulary, said to be 29.000 and 27.000 respectively.  
 
 My list, as named in the file folder:
 
- 'A_Dolls_house_Ibsen.rtf',
- 'Alice_in_Wonderland.rtf',
- 'All_around_the_moon_Verne.rtf',
- 'An_archtartic_mystery_verne.rtf',
- 'Anthem_Rand.rtf',
- 'Around_the_world_in_80_days_Verne.rtf',
- 'Don_Quixote.rtf',
- 'Fairytales_H_C_Andersen.rtf',
- 'Ghosts_Ibsen.rtf',
- 'Great_Expectations_by_Charles_Dickens.rtf',
- 'Gullivers_Travels_Swift.rtf',
- 'Hedda_Gabler_Ibsen .rtf',
- 'Iliad_Homer.rtf',
- 'Jungle_tales_of_Tarzan.rtf',
- 'LIttle_Eyolf_Ibsen.rtf',
- 'Martin_Eden_Jack_London.rtf',
- 'Meditations_Aurelius.rtf',
- 'Metamorphosis _ Kafka.rtf',
- 'Norwegian_tales_Asbjornsen_Moe.rtf',
- 'Peter_Pan.rtf',
- 'Pride_and_Prejudices .rtf',
- 'Robinson_Crusoe _ Defoe.rtf',
- 'Shakespeare.rtf',
- 'Siddharta _ Hesse.rtf',
- 'Swanns_Way_Proust.rtf',
- 'Tale_of_two_cities_dickens.rtf',
- 'Tarzan_of_the_apes.rtf',
- 'Tarzan_the_terrible.rtf',
- 'The_3_musketeers_Dumas.rtf',
- 'The_Iron_Heel_Jack_london.rtf',
- 'The_beasts_of_Tarzan.rtf',
- 'The_black_tulip_Dumas.rtf',
- 'The_brothers_karamazov_Dostoyevsky.rtf',
- 'The_importance_of_being_earnest_Wilde.rtf',
- 'The_jungle_book_Kipling.rtf',
- 'The_man_in_the_iron_mask_Dumas.rtf',
- 'The_return_of_tarzan.rtf',
- 'The_secret_of_the_island_verne.rtf',
- 'The_trial_Kafka.rtf',
- 'War_and_peace_tolstoy.rtf',
- 'Wuthering_Heights_bronte.rtf'
+    'A_Dolls_house_Ibsen.rtf',
+    'Alice_in_Wonderland.rtf',
+    'All_around_the_moon_Verne.rtf',
+    'An_archtartic_mystery_verne.rtf',
+    'Anthem_Rand.rtf',
+    'Around_the_world_in_80_days_Verne.rtf',
+    'Don_Quixote.rtf',
+    'Fairytales_H_C_Andersen.rtf',
+    'Ghosts_Ibsen.rtf',
+    'Great_Expectations_by_Charles_Dickens.rtf',
+    'Gullivers_Travels_Swift.rtf',
+    'Hedda_Gabler_Ibsen .rtf',
+    'Iliad_Homer.rtf',
+    'Jungle_tales_of_Tarzan.rtf',
+    'LIttle_Eyolf_Ibsen.rtf',
+    'Martin_Eden_Jack_London.rtf',
+    'Meditations_Aurelius.rtf',
+    'Metamorphosis _ Kafka.rtf',
+    'Norwegian_tales_Asbjornsen_Moe.rtf',
+    'Peter_Pan.rtf',
+    'Pride_and_Prejudices .rtf',
+    'Robinson_Crusoe _ Defoe.rtf',
+    'Shakespeare.rtf',
+    'Siddharta _ Hesse.rtf',
+    'Swanns_Way_Proust.rtf',
+    'Tale_of_two_cities_dickens.rtf',
+    'Tarzan_of_the_apes.rtf',
+    'Tarzan_the_terrible.rtf',
+    'The_3_musketeers_Dumas.rtf',
+    'The_Iron_Heel_Jack_london.rtf',
+    'The_beasts_of_Tarzan.rtf',
+    'The_black_tulip_Dumas.rtf',
+    'The_brothers_karamazov_Dostoyevsky.rtf',
+    'The_importance_of_being_earnest_Wilde.rtf',
+    'The_jungle_book_Kipling.rtf',
+    'The_man_in_the_iron_mask_Dumas.rtf',
+    'The_return_of_tarzan.rtf',
+    'The_secret_of_the_island_verne.rtf',
+    'The_trial_Kafka.rtf',
+    'War_and_peace_tolstoy.rtf',
+    'Wuthering_Heights_bronte.rtf'
 
-Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which I realized is available for all my books. The file naming was kept for the sake of convenience as the code reading the files was setup for the .rtf extension. All books are present in a folder in GitHub. 
+Although the filenames indicate .rtf (Rich Text Format), they are in straightforward text format. I started with a few rft format files, bud decided to download the .txt format which I realized is available for all my books. The file naming was kept for the sake of convenience as the code reading the files then was written for the .rtf extension. All books are present in a folder in GitHub. 
 
 #### Comments on the book data
 
-- After a few assessments of the data on a word level I noticed some parts of the vocabulary that I did not expect from older works, such as 'email'. I had screened through the first part of most of the books to verify the content and format, which all seemed correct. At closer inspection I realized that all ebooks had a standard, quite long, section at the end, containing legal description of the ebook handling. In addition to the introduction of unwanted irrelevant vocabulary to the corpus this part is the same in all books and would therefore reduce the uniqueness of the items. The section was for this reason removed from each of the books.   
+After a few assessments of the data on a word level I noticed some parts of the vocabulary that I did not expect from older works, such as 'email'. I had screened through the first part of most of the books to verify the content and format, which all seemed correct. At closer inspection I realized that all ebooks had a standard, quite long, section at the end, containing legal description of the ebook handling. In addition to the introduction of unwanted irrelevant vocabulary to the corpus this part is the same in all books and would therefore reduce the uniqueness of the items. The section was for this reason removed from each of the books.   
 
 - The complete volume of words from the books, the 'corpus' was analyzed thouroughly. 
   There are many levels (and combination of levels) to look at the corpus;  
 
-- Corpus level
-- Book level
-- Sentence level
-- Vocabulary level (unique words)
-- Word level (real words, or 'tokens')
-- Level of 'words' before removing non-meaningful characters.  
-- Level of 'reduced tokens'; ie words cleaned and/or transformed to a netted minimum.   
+      Corpus level
+      Book level
+      Sentence level
+      Vocabulary level (unique words)
+      Word level (real words, or 'tokens')
+      Level of 'words' before removing non-meaningful characters.  
+      Level of 'reduced tokens'; ie words cleaned and/or transformed to a netted minimum.   
 
 Below is an example of numbers for these levels
 
-Corpus_raw: 30776216
-Wordlist: 5572533
-Sentences: 309218
-Vocabulary: 96909
+    Corpus_raw: 30776216
+    Wordlist: 5572533
+    Sentences: 309218
+    Vocabulary: 96909
 
 As a reflection 96909 comes across as a very rich vocabulary, even with Shakespeare and Ibsen onboard. One reason is probably that names are included in the corpus and are counted as words. Linguists state that if we include all varieties of known english words it will add up to ca 500.000. A normal active vocabulary consists of a modest 5-6000 words in most countries.    
 
@@ -178,14 +178,14 @@ Although utilities with options such as the 'simple_preprocess' are useful, I wa
 
 #### Assessing different word_tokenizers
 
-Tokenizers in common utility libraries offers a variety of processing options. As an illustrative example, I tested the different outcomes of two often used word tokenizers applied on sentences created from the punct_sentence_tokenizer; 
+Tokenizers in common utility libraries offers a variety of processing options for establishing 'tokens'; separate word objects. As an illustrative example, I tested the different outcomes of two often used word tokenizers applied on sentences created from the punct_sentence_tokenizer; 
 
-nltk.tokenize.word_tokenize(sentence) versus nltk.tokenize.wordpunct_tokenize(sentence)
+    nltk.tokenize.word_tokenize(sentence) versus nltk.tokenize.wordpunct_tokenize(sentence)
 For sentence no:99 in the Alice in Wonderland corpus we can see how the word tokenizers differ, respectively:
 
- 'she was up to her chin in salt-water.',
- ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt-water', '.'],
- ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt', '-', 'water', '.']
+    'she was up to her chin in salt-water.',
+    ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt-water', '.'],
+    ['she', 'was', 'up', 'to', 'her', 'chin', 'in', 'salt', '-', 'water', '.']
 
 The word_tokenizer keeps the hyphenated words as one token, the wordpunct_tokenize splits these words into 3 separate tokens.  When analyzing text in literary works, it makes sense to keep the original word as written by the author, this sentence is a good example as the words 'salt' and 'water' separately is quite different from 'salt-water'.  The first could be a part of a recipe for baking bread, the second indicates seawater - or tears, as is the case in this story. 
 
@@ -195,51 +195,51 @@ I choose to use the word_tokenizer for this book-based project, although another
 
 When preparing for topic analysis and other content assessments we want to look at the meaningful elements of the text, not the 'filler words'. There are many lists of 'filler words' or 'stop words' as they are called, for several languages. I use a list of english 'stop words' (from the nltk.corpus) and write two small code snippets to remove these words in a sentence and then loop for all sentences in a book. The function 'make-fin-sent' (below) will 'make final sentences' for a given book, to be used for topic extraction where we want to avoid stopwords: 
 
-def remove_stopwords(words):
+    def remove_stopwords(words):
        return [word for word in words if word not in stop_words]
 
-def make_fin_sent(sent_in):
-    fin_sent=[]
-    for sent in sent_in:
-        fin_sent.append(remove_stopwords(sent))
-    return fin_sent
+    def make_fin_sent(sent_in):
+        fin_sent=[]
+        for sent in sent_in:
+            fin_sent.append(remove_stopwords(sent))
+        return fin_sent
     
 A final sentence will typically look like this (sentence no 80 in Swanns Way):     
     
-['Come', 'stop', 'husband', 'drinking', 'brandy']
+    ['Come', 'stop', 'husband', 'drinking', 'brandy']
 
 
 #### Looking at frequent words in a text
 
 Zooming on on the corpus, the need for data cleaning soon becomes obvious. First try of 'most common words' on a raw (uncleaned) corpus returns a rather uninteresting list over the 10 most frequent 'words', using FreqDist (from nltk.probability import FreqDist).
 
-({',': 460770, 'the': 270580, '.': 258286, 'and': 160660, 'of': 143300, 'to': 142159, 'a': 95923, 'I': 91671, 'in': 78754, 'that': 71929, ...})
+    ({',': 460770, 'the': 270580, '.': 258286, 'and': 160660, 'of': 143300, 'to': 142159, 'a': 95923, 'I': 91671, 'in': 78754, 'that': 71929, ...})
 
 Removing punctiations and single characters with a small cleaning function improves a little:
 
-cleanlist=[]
-def sentence_to_cleanlist(raw):
-    cleanlist = re.sub("[^a-zA-Z]"," ", raw)
-    return cleanlist
+    cleanlist=[]
+    def sentence_to_cleanlist(raw):
+        cleanlist = re.sub("[^a-zA-Z]"," ", raw)
+        return cleanlist
 
-({'the': 270904, 'and': 161240, 'to': 143756, 'of': 143437, 'a': 96535, 'I': 92847, 'in': 79205, 'that': 72439, 'he': 64047, 'his': 58524, ...})
+    ({'the': 270904, 'and': 161240, 'to': 143756, 'of': 143437, 'a': 96535, 'I': 92847, 'in': 79205, 'that': 72439, 'he': 64047, 'his': 58524, ...})
 
 This exercize can be done for the individual books, but across english books the top 20 words pretty much remains the same. 
 
-Next step is be to remove the stop words, as decribed above. We discover that all 10 words on the previous list were in fact stopwords.
+Next step is be to remove the stop words, as described above. We discover that all 10 words on the previous list were in fact stopwords.
 
 Using the result from removing stopwords with make_fin_sent, the10 most frequent words for the full corpus are:
 
-('said', 19290),
- ('one', 17840),
- ('would', 17020),
- ('man', 11407),
- ('could', 11068),
- ('upon', 9815),
- ('well', 9252),
- ('time', 9081),
- ('know', 8822),
- ('thou', 8765)
+    ('said', 19290),
+    ('one', 17840),
+    ('would', 17020),
+    ('man', 11407),
+    ('could', 11068),
+    ('upon', 9815),
+    ('well', 9252),
+    ('time', 9081),
+    ('know', 8822),
+    ('thou', 8765)
 
 Looking at this list, I can recognize the words of literature objects and dialogue-oriented text, with 'said' on top of the lists.  
 The last word is a hint of the book's age and I guess this is a Shakespearian word. 
@@ -250,39 +250,39 @@ Below is a figure showing the count of the 30 most common words in the corpus, a
 
 
 Applying the word frequency on only Alice in Wonderland, without stopwords, we get this list: 
-('alice', 173),
- ('said', 144),
- ('little', 59),
- ('rabbit', 37),
- ('one', 35),
- ('like', 34),
- ('queen', 30),
- ('could', 28),
- ('mouse', 27),
- ('illustration', 26)
+     ('alice', 173),
+     ('said', 144),
+     ('little', 59),
+     ('rabbit', 37),
+     ('one', 35),
+     ('like', 34),
+     ('queen', 30),
+     ('could', 28),
+     ('mouse', 27),
+     ('illustration', 26)
 
-for 'The junglebook' , the 10  most frequent words when cleaned for filler words are (using FreqDist again):
+For 'The junglebook' , the 10  most frequent words when cleaned for filler words are (using FreqDist again):
 
-'said': 430, 'little': 231, 'mowgli': 220, 'man': 177, 'one': 174, 'would': 162, 'jungle': 147, 'head': 137, 'bagheera': 129, 'could': 125, 
+    'said': 430, 'little': 231, 'mowgli': 220, 'man': 177, 'one': 174, 'would': 162, 'jungle': 147, 'head': 137, 'bagheera': 129, 'could': 125, 
 
 #### Recap - data cleaning in nlp
 
 Cleaning the corpus can be done by several small cleaning code-snippets;
 
-- sentence tokenization
-- word tokenizations
-- removing unwanted characters (often called normalization)
-- converting all words to lowercase  
-- removing stopwords
-- lemmming and stemming
-- pos-tagging 
+    - sentence tokenization
+    - word tokenizations
+    - removing unwanted characters (often called normalization)
+    - converting all words to lowercase  
+    - removing stopwords
+    - lemmming and stemming
+    - pos-tagging 
 
 The 5 first cleaning steps are described. The two latter were tested on the corpus, but not used for later transformation purposes. 
 Code for these tests are still kept in the Notebook.  
 
 ### Exploratory Visualization
 
-Word frequency after different word preprocesses is interesting. Below are two more plots describing this, showing number of words in the whole corpus and in one book. BOth are cleaned by normalization (removing stray characters), the book is cleaned for stopwords.  
+Word frequency after different word preprocesses is interesting. Below are two more plots describing this, showing number of words in the whole corpus and in one book. Both are cleaned by normalization (removing stray characters), the book is cleaned for stopwords.  
 
 ![image](https://user-images.githubusercontent.com/42574791/49230127-3f53f400-f3ef-11e8-932d-60167007b8a9.png)
 
@@ -297,27 +297,29 @@ Algorithms used for the projects are chosen based on my understanding of useful 
 
 As described in the book, there are three commonly used ways to treat text analysis, often by combinations of the three;
 
-- The Gensim way
-- The Nltk way
-- The ScikitLearn way
+  - The Gensim way
+  - The nltk way
+  - The ScikitLearn way
 
 My use of algorithms are mainly by using Gensim utilities, but also nltk resources.
 
-The data preprocessing was described in previous part of the report;
-- Use of word- and sentence tokenizers from nltk.tokenize
-- Use of nltk.probability.FreqDist
-- Use of nltk.corpus.stopwords 
-- Use of gensim.utils.simple_preprocess
+  The data preprocessing was described in previous part of the report;
+  - Use of word- and sentence tokenizers from nltk.tokenize
+  - Use of nltk.probability.FreqDist
+  - Use of nltk.corpus.stopwords 
+  - Use of gensim.utils.simple_preprocess
 
 Word and document analysis
-- gensims Word2Vec and Doc2Vec for vectorization of corpus
-- gensim similarities for similarity analysis
-- sklearn.manifold.TSNE for dimension reduction
+  
+    - gensims Word2Vec and Doc2Vec for vectorization of corpus
+    - gensim similarities for similarity analysis
+    - sklearn.manifold.TSNE for dimension reduction
 
- Topic extraction
- - gensim Dictionary and LDAmodel from gensim.models
+Topic extraction
+
+    gensim Dictionary and LDAmodel from gensim.models
  
-For all algorithms the initial parameters are chosen based on examples from the Udacity courses, the book, or articles. Some are set from characteristics of the date (ie vocabulary size). Many of the parameters are changed through the project to understand how and if the models can be optimized.    
+For all algorithms the initial parameters are set based on examples from the Udacity courses, the book, or articles. Some are set from characteristics of the date (ie vocabulary size). Many of the parameters are changed through the project to understand how and if the models can be optimized.    
 
 ### Benchmark
 
@@ -336,9 +338,9 @@ NLP requires several steps of preprocessing just as we do for numerical values a
 I realized that the three separate questions posed in the project would have to be answered with three separate paths with different data prepping and processing. 
 
 1) Data analysis of all words in all books in the mini-library
-- With a focus on the sum of all words in the book collection the preprocessing starts with a 'full' collection of words across the books. The text is divided into sentences and all words are identified separately. The books are structured into sentences, using a trained process. I also use a word-oriented vectorization and eventually look at the matrix of all words, identifying the most frequent words and how the words are related to each other in the matrix.
+With a focus on the sum of all words in the book collection the preprocessing starts with a 'full' collection of words across the books. The text is then divided into sentences and all words are identified separately. The books are structured into sentences, using a trained process. I also use a word-oriented vectorization and eventually look at the matrix of all words, identifying the most frequent words and how the words are related to each other in the matrix.
 
-In the analysis process i keep separate versions of the result of different text preparations, to be in control of the results and which versions are suitable for the next step of analysis. 
+In the analysis process I keep separate versions of the result of different text preparations, to be in control of the results and which versions are suitable for the next step of analysis. 
 
 2) Data analysis for comparing books in the mini-library. ,   
 When aiming to compare text objects I need to separate the objects(books) and prepare them individually, building structures for mathematical comparisons. For this purpose I use another version of the package, with a document(ie book) focus. Each book is vectorized and the vectors are compared.   
@@ -360,11 +362,13 @@ I start by establishing a word-based Word2Vec model; named 'word_model'.
 
 The word_model is applied on the whole corpus tokenized on a sentence-level, using the version called 'sentences'. In 'sentences', the full corpus is split into sentences and each word is tokenized. 
 
-Sentence no 5678 in the corpus is a good exapmle: 'when','we','get','to','the','moon','what','shall','we','do','there'
+Sentence no 5678 in the corpus is a good example: 
+
+    'when','we','get','to','the','moon','what','shall','we','do','there'
 
 The word_model is set by : 
 
-Parameters:
+    Parameters:
     num_features = 300
     min_word_count = 15
     num_workers = multiprocessing.cpu_count()
@@ -410,6 +414,7 @@ A few examples:
 
 
 Most similar words - in the vector dimension
+
 Below are two examples, the first on the initial model version, the second on an enhanced model version when upping some of the parameters (number of features, context size) . The results were not dramatically improved for this task after model tweaking.  
 
     word_model.wv.most_similar('pride')
@@ -440,7 +445,7 @@ Below are two examples, the first on the initial model version, the second on an
  
 #### Word pairing 
 Finally, I want to try out the classic 'king-to-queen' vector comparison. 
- For this purpose I use the most_similar_cosmul functionality, based on cosine computation. 
+For this purpose I use the most_similar_cosmul functionality, based on a cosine computation. 
  
 The base for this is a ' x relates to y as a relates to...' logic, expecting to return the word that has a menaingful relation to a as y has to x. My attempts to do this were not in the first tryouts as clear as the reknown queen-king case. I thought the reason was a limited corpus, but changing the model parameters improved the result, as shown below. 
 
@@ -452,11 +457,11 @@ The base for this is a ' x relates to y as a relates to...' logic, expecting to 
     print("{start1} is related to {end1}, as {start2} is related to {end2}".format(**locals()))
     return end2
 
-First model:
+First version of model returns:
 
-'ocean is related to submarine, as jungle is related to forest
-swann is related to odette, as nora is related to helmer (OK!)
-queen is related to king, as woman is related to girl'
+    'ocean is related to submarine, as jungle is related to forest
+    swann is related to odette, as nora is related to helmer (OK!)
+    queen is related to king, as woman is related to girl'
 
 After changing parameters the similarity tests are better; 
 
@@ -465,17 +470,17 @@ After changing parameters the similarity tests are better;
     nearest_similarity_cosmul("swann", "odette", "artagnan")
     nearest_similarity_cosmul("sea", "boat", "city")
 
-'man is related to woman, as queen is related to king
-husband is related to wife, as man is related to woman
-swann is related to odette, as artagnan is related to porthos
-sea is related to boat, as city is related to palaces'
+    'man is related to woman, as queen is related to king
+    husband is related to wife, as man is related to woman
+    swann is related to odette, as artagnan is related to porthos
+    sea is related to boat, as city is related to palaces'
 
 
 ### 2) Book comparisons, using Doc2Vec
 
 Dov2Vec is similar to Word2Vec, but applied on document (here book) level. 
 
-A hypothesis was to use tfidf here, but reading lays out that LDA does not need TF-IDF and can be used with bag_of_words only. There are different opnions on whether TF-idf will improve the results, but without clear conclusions. This is also commented later in the report.
+A hypothesis was to use tfidf here, but reading articles seems to indicate that LDA does not need TF-IDF and can be used with bag_of_words only. There are different opnions on whether TF-idf will improve the results, but without clear conclusions. This is also commented later in the report.
 
 The model is defined and named model_doc. Data input is 'book_corpus', the book-level corpus established earlier.   
 The model uses 3 parameters. All were varied during the project, the results seemed to stay at fairly the same level. 
@@ -498,17 +503,17 @@ Finding the most similar book pairs, sorted by hitrate(similarity)
 Result list below shows that similarity is found between books from same author, but also of same genre. 
 Folklore tales are paired, so are Gullivers travels and Robinson Crusoe.
  
-Books\A_Dolls_house_Ibsen.rtf - Books\Hedda_Gabler_Ibsen .rtf
-Books\Alice_in_Wonderland.rtf - Books\Norwegian_tales_Asbjornsen_Moe.rtf
-Books\All_around_the_moon_Verne.rtf - Books\The_secret_of_the_island_verne.rtf
-Books\An_archtartic_mystery_verne.rtf - Books\The_secret_of_the_island_verne.rtf
-Books\Anthem_Rand.rtf - Books\The_jungle_book_Kipling.rtf
-Books\Around_the_world_in_80_days_Verne.rtf - Books\The_secret_of_the_island_verne.rtf
-Books\Don_Quixote.rtf - Books\Iliad_Homer.rtf
-Books\Fairytales_H_C_Andersen.rtf - Books\Norwegian_tales_Asbjornsen_Moe.rtf
-Books\Ghosts_Ibsen.rtf - Books\LIttle_Eyolf_Ibsen.rtf
-Books\Great_Expectations_by_Charles_Dickens.rtf - Books\Tale_of_two_cities_dickens.rtf
-Books\Gullivers_Travels_Swift.rtf - Books\Robinson_Crusoe _ Defoe.rtf
+    Books\A_Dolls_house_Ibsen.rtf - Books\Hedda_Gabler_Ibsen .rtf
+    Books\Alice_in_Wonderland.rtf - Books\Norwegian_tales_Asbjornsen_Moe.rtf
+    Books\All_around_the_moon_Verne.rtf - Books\The_secret_of_the_island_verne.rtf
+    Books\An_archtartic_mystery_verne.rtf - Books\The_secret_of_the_island_verne.rtf
+    Books\Anthem_Rand.rtf - Books\The_jungle_book_Kipling.rtf
+    Books\Around_the_world_in_80_days_Verne.rtf - Books\The_secret_of_the_island_verne.rtf
+    Books\Don_Quixote.rtf - Books\Iliad_Homer.rtf
+    Books\Fairytales_H_C_Andersen.rtf - Books\Norwegian_tales_Asbjornsen_Moe.rtf
+    Books\Ghosts_Ibsen.rtf - Books\LIttle_Eyolf_Ibsen.rtf
+    Books\Great_Expectations_by_Charles_Dickens.rtf - Books\Tale_of_two_cities_dickens.rtf
+    Books\Gullivers_Travels_Swift.rtf - Books\Robinson_Crusoe _ Defoe.rtf
     
 WHen testing on specific books, I use the 'most_similar:
 
@@ -516,24 +521,24 @@ WHen testing on specific books, I use the 'most_similar:
 
 This returns the other Tarzan books, folowed by adventure books for adolescents; quite a good result.  
 
-('Books\\The_beasts_of_Tarzan.rtf', 0.7585173845291138),
- ('Books\\Jungle_tales_of_Tarzan.rtf', 0.7063543796539307),
- ('Books\\The_return_of_tarzan.rtf', 0.4879530370235443),
- ('Books\\Tarzan_the_terrible.rtf', 0.4041978716850281),
- ('Books\\An_archtartic_mystery_verne.rtf', 0.319263219833374),
- ('Books\\The_secret_of_the_island_verne.rtf', 0.3165384531021118),
- ('Books\\The_jungle_book_Kipling.rtf', 0.31132781505584717),
- ('Books\\Peter_Pan.rtf', 0.30049124360084534),
- ('Books\\Alice_in_Wonderland.rtf', 0.28424006700515747),
- ('Books\\Robinson_Crusoe _ Defoe.rtf', 0.2718788981437683)
+    ('Books\\The_beasts_of_Tarzan.rtf', 0.7585173845291138),
+     ('Books\\Jungle_tales_of_Tarzan.rtf', 0.7063543796539307),
+     ('Books\\The_return_of_tarzan.rtf', 0.4879530370235443),
+     ('Books\\Tarzan_the_terrible.rtf', 0.4041978716850281),
+     ('Books\\An_archtartic_mystery_verne.rtf', 0.319263219833374),
+     ('Books\\The_secret_of_the_island_verne.rtf', 0.3165384531021118),
+     ('Books\\The_jungle_book_Kipling.rtf', 0.31132781505584717),
+     ('Books\\Peter_Pan.rtf', 0.30049124360084534),
+     ('Books\\Alice_in_Wonderland.rtf', 0.28424006700515747),
+     ('Books\\Robinson_Crusoe _ Defoe.rtf', 0.2718788981437683)
 
     model_doc.docvecs.most_similar(10) (Book 10 = Gullivers Travels by Defoe)
  
- ('Books\\Robinson_Crusoe _ Defoe.rtf', 0.47113150358200073),
- ('Books\\Pride_and_Prejudices .rtf', 0.3537435233592987),
- ('Books\\Meditations_Aurelius.rtf', 0.3536701798439026),
- ('Books\\Fairytales_H_C_Andersen.rtf', 0.25862976908683777),
- ('Books\\The_secret_of_the_island_verne.rtf', 0.25140485167503357)
+     ('Books\\Robinson_Crusoe _ Defoe.rtf', 0.47113150358200073),
+     ('Books\\Pride_and_Prejudices .rtf', 0.3537435233592987),
+     ('Books\\Meditations_Aurelius.rtf', 0.3536701798439026),
+     ('Books\\Fairytales_H_C_Andersen.rtf', 0.25862976908683777),
+     ('Books\\The_secret_of_the_island_verne.rtf', 0.25140485167503357)
  
 Tsne dimension reduction was done for this vectors as well, and result inspected visually (this is in the Notebook) 
 
@@ -544,7 +549,8 @@ Tsne dimension reduction was done for this vectors as well, and result inspected
 ### 3) Topic extraction with doc2bow  and LDA
 
 For topic extraction I chose to use a third part of Gensim; doc2bow - using a bag-of-word method (bow: bag-of-words)
-I also used another algorithm; LDA; often used for nlp. LDA: Latent Dirichlet Allocation. LDA is in the Gensim package, too.  
+I also used another algorithm; LDA; often used for nlp. LDA: Latent Dirichlet Allocation. LDA is also from the Gensim package.
+
 Create a Dictionary from the data, then a bag of words.  
 About LDA : https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
 
@@ -563,32 +569,28 @@ Results from this can be seen when we print the topics from the LDA algorithm
     alice_topics = ldamodel_alice.print_topics(num_words=5)
     for topic in alice_topics:
         print(topic)
-
-
-    alice_topics = ldamodel_alice.print_topics(num_words=5)
-    for topic in alice_topics:
-        print(topic)
-    
+       
 Presenting the proposed 3 topics using 50 passes: 
 
-(0, '0.014*"one" + 0.012*"duchess" + 0.009*"alice" + 0.008*"first" + 0.008*"little"')
-(1, '0.036*"alice" + 0.018*"little" + 0.016*"said" + 0.012*"rabbit" + 0.009*"could"')
-(2, '0.056*"said" + 0.037*"alice" + 0.012*"king" + 0.012*"know" + 0.009*"like"')
+    (0, '0.014*"one" + 0.012*"duchess" + 0.009*"alice" + 0.008*"first" + 0.008*"little"')
+    (1, '0.036*"alice" + 0.018*"little" + 0.016*"said" + 0.012*"rabbit" + 0.009*"could"')
+    (2, '0.056*"said" + 0.037*"alice" + 0.012*"king" + 0.012*"know" + 0.009*"like"')
 
 Setting to 250 passes: 
 
-(0, '0.031*"alice" + 0.021*"said" + 0.010*"mouse" + 0.009*"thought" + 0.009*"go"')
-(1, '0.041*"alice" + 0.037*"said" + 0.010*"rabbit" + 0.007*"came" + 0.007*"moment"')
-(2, '0.017*"one" + 0.017*"little" + 0.013*"said" + 0.013*"alice" + 0.012*"way"')
+    (0, '0.031*"alice" + 0.021*"said" + 0.010*"mouse" + 0.009*"thought" + 0.009*"go"')
+    (1, '0.041*"alice" + 0.037*"said" + 0.010*"rabbit" + 0.007*"came" + 0.007*"moment"')
+    (2, '0.017*"one" + 0.017*"little" + 0.013*"said" + 0.013*"alice" + 0.012*"way"')
 
 Setting to 750 passes:
 
-0, '0.066*"said" + 0.042*"alice" + 0.010*"duchess" + 0.009*"oh" + 0.009*"think"')
-(1, '0.014*"little" + 0.013*"know" + 0.010*"alice" + 0.009*"said" + 0.009*"queen"')
-(2, '0.031*"alice" + 0.015*"rabbit" + 0.011*"little" + 0.009*"white" + 0.008*"one"')
+    0, '0.066*"said" + 0.042*"alice" + 0.010*"duchess" + 0.009*"oh" + 0.009*"think"')
+    (1, '0.014*"little" + 0.013*"know" + 0.010*"alice" + 0.009*"said" + 0.009*"queen"')
+    (2, '0.031*"alice" + 0.015*"rabbit" + 0.011*"little" + 0.009*"white" + 0.008*"one"')
 
 The topic extraction must be performed for each book, and on a sentence level. As shown, I varied the no: of passes, and also the no of topics and num_words. It is not obvious that the results increase with more passes.
-Is "said+alice+duchess+oh+think' really better than 'one+duchess+alice+first+little' ?
+
+    Is "said+alice+duchess+oh+think' really better than 'one+duchess+alice+first+little' ?
 
 I can see that Proposed Topics are similar to the book's frequent words, but not 100% identical.
 
@@ -603,21 +605,23 @@ Several of the improvement measures taken are mentioned above, a recap is as fol
 
 Preprocess : Data gathering and cleaning
 
- - Legal clausuls at the end of the books were removed completely as I saw they introduced 'noise' in the text
- - Some sentences in the book's beginnings were removed for same reasons; Internet Urls, email addresses etc. 
- - Tokenizers on sentence and word level were tested and compared; I chose the one that kept full original words
+    Legal clausuls at the end of the books were removed completely as I saw they introduced 'noise' in the text
+    Some sentences in the book's beginnings were removed for same reasons; Internet Urls, email addresses etc. 
+    Tokenizers on sentence and word level were tested and compared; I chose the one that kept full original words
  
 1) Word analysis 
- - Fdist results from raw_corpus were poor, I changed the input to sentences with both cleaning of characters and stopwords removed
- - Word2Vec model parameters:
-       num_features = 300 (increased from 200 )
-       min_word_count = 20 (inreased from 10 to 20)
-       num_workers = multiprocessing.cpu_count() (unchanged)
-       context_size = 10 (increased from 5 to 10)
-       downsampling = 1e-4 (unchanged)
-       seed = 9 (unchanged)
+
+    Fdist results from raw_corpus were poor, I changed the input to sentences with both cleaning of characters and stopwords removed
+    
+       Word2Vec model parameters:
+           num_features = 300 (increased from 200 )
+           min_word_count = 20 (inreased from 10 to 20)
+           num_workers = multiprocessing.cpu_count() (unchanged)
+           context_size = 10 (increased from 5 to 10)
+           downsampling = 1e-4 (unchanged)
+           seed = 9 (unchanged)
        
- - TSNE parameters were tweaked similarly; aiming a balance between results and runtime
+TSNE parameters were tweaked similarly; aiming a balance between results and runtime
  
  
  2) Book analysis
@@ -640,18 +644,21 @@ Preprocess : Data gathering and cleaning
 A brief summary of the results for the three main tasks :
 
 1) Word analysis results
-- Statistics vere produced for corpus and books, on different levels
-- Corpus and vocabulary could be investigated, with a clear visual of vocabulary in a plotted wordcloud
-- I could zoom in on chosen words, see the vicinity words
-- Identifying most frequent words was done
-- Similarity words were delivered for any chosen word
-- Word pairs were produced on a satisfying level
+
+    Statistics vere produced for corpus and books, on different levels
+    Corpus and vocabulary could be investigated, with a clear visual of vocabulary in a plotted wordcloud
+    I could zoom in on chosen words, see the vicinity words
+    Identifying most frequent words was done
+    Similarity words were delivered for any chosen word
+    Word pairs were produced on a satisfying level
 
 2) Book similarity
+
 - Good results after parameter tweaks. Obvious similarity between books by the same author, also similarity caused by plot and genre.
 - Visuals in form of a wordcloud as for the word analysis 
 
 3) Topic extraction
+
 - Acceptable good results. 
 - Verification of result, in addition to scoring figures done by book knowledge and a generous interpretation of the topic words.   
 
@@ -662,8 +669,8 @@ Finally, I found a completely unknown book on Gutenberg and performed Topic extr
 
 The results from this old book about food and chemistry strikes me by being suprisingly relevant for today's view on food and health. 
 
- '0.017*"food" + 0.016*"protein" + 0.012*"quantity" + 0.011*"matter"'
- '0.007*"salt" + 0.007*"one" + 0.006*"food" + 0.005*"meat"'
+    '0.017*"food" + 0.016*"protein" + 0.012*"quantity" + 0.011*"matter"'
+    '0.007*"salt" + 0.007*"one" + 0.006*"food" + 0.005*"meat"'
 
 
 ### Extra : Test of a contemporary document
@@ -672,15 +679,15 @@ For fun and curiosity, I tested the topic extraction on a random modern document
 
 Spending 5 minutes downloading the file, running it through the code, gave this topic extraction:
 
-(0, '0.031*"terms" + 0.030*"adobe" + 0.020*"software" + 0.020*"use" + 0.020*"sublicensee" + 0.019*"shall" + 0.017*"may"')
-(1, '0.030*"sublicensee" + 0.028*"terms" + 0.021*"google" + 0.020*"adobe" + 0.018*"rights" + 0.013*"additional" + 0.012*"may"')
-(2, '0.035*"adobe" + 0.028*"software" + 0.018*"video" + 0.018*"code" + 0.017*"content" + 0.014*"may" + 0.013*"avc"')
-(3, '0.071*"google" + 0.032*"terms" + 0.027*"services" + 0.020*"agreement" + 0.018*"adobe" + 0.018*"chrome" + 0.014*"content"')
-(4, '0.046*"google" + 0.038*"services" + 0.023*"may" + 0.021*"use" + 0.019*"software" + 0.017*"adobe" + 0.017*"sublicensee"')
+    (0, '0.031*"terms" + 0.030*"adobe" + 0.020*"software" + 0.020*"use" + 0.020*"sublicensee" + 0.019*"shall" + 0.017*"may"')
+    (1, '0.030*"sublicensee" + 0.028*"terms" + 0.021*"google" + 0.020*"adobe" + 0.018*"rights" + 0.013*"additional" + 0.012*"may"')
+    (2, '0.035*"adobe" + 0.028*"software" + 0.018*"video" + 0.018*"code" + 0.017*"content" + 0.014*"may" + 0.013*"avc"')
+    (3, '0.071*"google" + 0.032*"terms" + 0.027*"services" + 0.020*"agreement" + 0.018*"adobe" + 0.018*"chrome" + 0.014*"content"')
+    (4, '0.046*"google" + 0.038*"services" + 0.023*"may" + 0.021*"use" + 0.019*"software" + 0.017*"adobe" + 0.017*"sublicensee"')
 
 It is not a trimmed executive summary, but it indicates the content, ie by the last topic suggestion
 
--"google-services-may-use-software-adobe-sublicensee'
+    "google-services-may-use-software-adobe-sublicensee'
 
 ### Additional Model Evaluation and Comments
 
