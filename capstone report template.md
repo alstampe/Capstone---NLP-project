@@ -728,7 +728,7 @@ Alltogether, I find the results from a compact Capstone project, perfomed with a
 
 ## Improvement
 
-My project did not include establishing a user interface for input of random documents, nor a prepped output in the form of screenbased result presentation or printable report. For my real-life problem this will have to be made, but not neccesarily a glossy user interfase, as this is for internal use in back office environments, nor for customer usage externally. 
+My project did not include establishing a user interface for input of random documents, nor a prepped output in the form of screenbased result presentation or printable report. For my real-life problem this will have to be made, but not neccessarily a glossy user interfase, as this is for internal use in back office environments, nor for customer usage externally. 
 
 Topic extraction need to be investigated and tuned more, to find the optimal parameters for a given corpus.
 
