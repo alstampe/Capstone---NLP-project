@@ -95,10 +95,10 @@ As a balance between informative corpus size and variety - and a volume manageab
     The books are all in english
     6 books have Norwegian or Danish origin (Ibsens plays and 2 fairytale collections)
     Some of the items are plays (Ibsen, Shakespeare)
-    I have personally read all books - primarily wholly, but for some only partially,  (Shakespeares complete works, the Iliad)
+    I have personally read all books - primarily wholly, but for some only partially. 
     Some authors are represented by several works (Verne, Ibsen, Dumas, Burroughs)
     Nearly half of the items can be described as 'adventure journey tales'.
-    Two of the authors (Shakespeare and Ibsen) are known for their very rich vocabulary, said to be 29.000 and 27.000 respectively.  
+    Two of the authors (Shakespeare and Ibsen) are known for their very rich vocabulary(29.000 and 27.000).  
 
 My list, as named in the file folder:
 
@@ -183,6 +183,7 @@ Although utilities with options such as the 'simple_preprocess' are useful, I wa
 Tokenizers in common utility libraries offers a variety of processing options for establishing 'tokens'; separate word objects. As an illustrative example, I tested the different outcomes of two often used word tokenizers applied on sentences created from the punct_sentence_tokenizer; 
 
     nltk.tokenize.word_tokenize(sentence) versus nltk.tokenize.wordpunct_tokenize(sentence)
+    
 For sentence no:99 in the Alice in Wonderland corpus we can see how the word tokenizers differ, respectively:
 
     'she was up to her chin in salt-water.',
