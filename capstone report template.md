@@ -401,63 +401,9 @@ Similarity on doc(book) level.
 
 
 
-### 3) Topic extraction
-
-For topic extraction I chose to use a third part of Gensim; doc2bow - using a bag-of-word method (bow: bag-of-words)
-I also used another algorithm; LDA; often used for nlp. LDA: Latent Dirichlet Allocation. LDA is in the Gensim package, too.  
-Create a Dictionary from the data, then a bag of words.  
-
-Creating a corpora Dictionary based on a preprocessed book corpus on sentence level
-Creating a matrix with the Doc2Bow
-Instanciating lda
-Performing lda on the corpus, using the dictionary
-Printing the calculated topics from the ldamodel
-
-Data input for Topic Extraction will be, on a book level, the set of preprocessed sentences from the 'make-fin-sent' function. For finding topics, we do not want filler words as they will form a data noise here. ''
-
-Using Alice as my example again I start with creating a corpora Dictionary and use 'alice_fin_sent'.
-
-dictionary_alice = corpora.Dictionary(alice_fin_sent)
-
-doc_term_matrix_alice = [dictionary_alice.doc2bow(doc) for doc in alice_fin_sent]
-
-Lda = gensim.models.ldamodel.LdaModel
-
-ldamodel_alice = Lda(doc_term_matrix_alice, num_topics=3, id2word = dictionary_alice, passes=50)
-
-alice_topics = ldamodel_alice.print_topics(num_words=5)
-for topic in alice_topics:
-    print(topic)
-    
-Presenting the proposed 3 topics using 50 passes: 
-
-(0, '0.014*"one" + 0.012*"duchess" + 0.009*"alice" + 0.008*"first" + 0.008*"little"')
-(1, '0.036*"alice" + 0.018*"little" + 0.016*"said" + 0.012*"rabbit" + 0.009*"could"')
-(2, '0.056*"said" + 0.037*"alice" + 0.012*"king" + 0.012*"know" + 0.009*"like"')
-
-Setting to 250 passes: 
-
-(0, '0.031*"alice" + 0.021*"said" + 0.010*"mouse" + 0.009*"thought" + 0.009*"go"')
-(1, '0.041*"alice" + 0.037*"said" + 0.010*"rabbit" + 0.007*"came" + 0.007*"moment"')
-(2, '0.017*"one" + 0.017*"little" + 0.013*"said" + 0.013*"alice" + 0.012*"way"')
-
-Setting to 750 passes:
-
-0, '0.066*"said" + 0.042*"alice" + 0.010*"duchess" + 0.009*"oh" + 0.009*"think"')
-(1, '0.014*"little" + 0.013*"know" + 0.010*"alice" + 0.009*"said" + 0.009*"queen"')
-(2, '0.031*"alice" + 0.015*"rabbit" + 0.011*"little" + 0.009*"white" + 0.008*"one"')
 
 
-
-The topic extraction must be performed for each book, and on a sentence level.
-As shown, I varied the no: of passes, and also the no of topics and num_words. It is not obvious that the results increase with more passes; is "said+alice+duchess+oh+think' better than 'one+duchess+alice+first+little' ?
-
-I can see that Proposed Topics are similar to the book's frequent words, but not 100% identical.
-
-The same topic extraction steps were done for 5 other books, with similar results. 
-As  a pattern, topics seem to include the books protagonist, the second most important character (if any) and some typical words. 
-
-### Vector-based word analysis 
+### 1) Word analysis with Word2Vec 
 
 Gensim has a reknown Vectorization option, the Word2Vec which, as the name implies, vectorizes the corpus on a word level. Each unique word is assigned a numerical value, giving av matrix where one dimension is the size of the vocabulary.  
 
@@ -514,7 +460,7 @@ A few examples:
 
 
 Most similar words - in the vector dimension
-Below are two examples. 
+Below are two examples, the first on the initial model version, the second on an enhanced model version . The results were not dramatically improved for this task after model tweaking.  
 
 word_model.wv.most_similar('pride')
 
@@ -542,45 +488,68 @@ word_model.wv.most_similar('hunger')
  ('sickness', 0.6858627796173096),
  ('craving', 0.6856997013092041)
  
- FInally, I want to try out the classic 'king-to-queen' vector comparison. 
+#### Word pairing 
+FInally, I want to try out the classic 'king-to-queen' vector comparison. 
  For this purpose I use the most_similar_cosmul functionality, based on cosine computation. 
  
- Tha base for this is a ' x relates to y as a relates to...' logic, expecting to return the word that has a menaingful relation to a as y has to x. My attempts to do this are not as clear as the queen-king case, probably because of a limited corpus, but some word pairs are ok, as shown below. 
+The base for this is a ' x relates to y as a relates to...' logic, expecting to return the word that has a menaingful relation to a as y has to x. My attempts to do this were not in the first tryouts as clear as the reknown queen-king case. I thought the reason was a limited corpus, but changing the model parameters improved the result, as shown below. 
 
-input:
-nearest_similarity_cosmul("ocean", "submarine", "jungle")
-nearest_similarity_cosmul("swann", "odette", "nora")
+First model:
+'ocean is related to submarine, as jungle is related to forest
+swann is related to odette, as nora is related to helmer (OK!)
+queen is related to king, as woman is related to girl'
 
-returns:
-ocean is related to submarine, as jungle is related to forest
-swann is related to odette, as nora is related to helmer
+After changing parameters the similarity tests are better; 
 
-Of the different results from trying to remake the king-queen pairing, this wasone of the more amusing;
+'man is related to woman, as queen is related to king
+husband is related to wife, as man is related to woman
+swann is related to odette, as artagnan is related to porthos
+sea is related to boat, as city is related to palaces'
 
-'queen is related to king, as woman is related to girl'
 
-### Book comparisons
+### 2) Book comparisons, using Doc2Vec
 
-A hypothesis was to use tfidf here, but reading lays out that LDA does not need TF-IDF and can be used with Bag_of_words only. Tehre is a debate on whether TF-idf will improve the results, but without clear conclusions. 
+Dov2Vec is similar to Word2Vec, but applied on document (here book) level. 
+
+A hypothesis was to use tfidf here, but reading lays out that LDA does not need TF-IDF and can be used with bag_of_words only. There are different opnions on whether TF-idf will improve the results, but without clear conclusions. This is also commented later in the report.
+
+The model is defined and named #### model_doc. Data input is 'book_corpus', the book-level corpus established earlier.   
+The model uses 3 parameters. All were varied during the project, the results seemed to stay at fairly the same level. 
 
 model_doc = gensim.models.Doc2Vec(vector_size = 300, 
                               min_count = 3, 
                               epochs = 10)
                               
-model_doc.build_vocab(book_corpus)     
+model_doc.build_vocab(book_corpus) 
+model's vocabulary length: 31862
 
-model_doc.train(book_corpus, total_examples=3, epochs=10)
+model_doc.train(book_corpus, total_examples=31862, epochs=10)
 
-FInding the most similar book pairs, sorted by hitrate(similarity)
+Finding the most similar book pairs, sorted by hitrate(similarity)
 for book in book_filenames:
     most_similar = model_doc.docvecs.most_similar(book)[0][0]
     print("{} - {}".format(book, most_similar))
     
-Testing on books
+Result list below shows that similarity is found between books from same author, but also of same genre. 
+Folklore tales are paired, so are Gullivers travels and Robinson Crusoe.
+ 
+Books\A_Dolls_house_Ibsen.rtf - Books\Hedda_Gabler_Ibsen .rtf
+Books\Alice_in_Wonderland.rtf - Books\Norwegian_tales_Asbjornsen_Moe.rtf
+Books\All_around_the_moon_Verne.rtf - Books\The_secret_of_the_island_verne.rtf
+Books\An_archtartic_mystery_verne.rtf - Books\The_secret_of_the_island_verne.rtf
+Books\Anthem_Rand.rtf - Books\The_jungle_book_Kipling.rtf
+Books\Around_the_world_in_80_days_Verne.rtf - Books\The_secret_of_the_island_verne.rtf
+Books\Don_Quixote.rtf - Books\Iliad_Homer.rtf
+Books\Fairytales_H_C_Andersen.rtf - Books\Norwegian_tales_Asbjornsen_Moe.rtf
+Books\Ghosts_Ibsen.rtf - Books\LIttle_Eyolf_Ibsen.rtf
+Books\Great_Expectations_by_Charles_Dickens.rtf - Books\Tale_of_two_cities_dickens.rtf
+Books\Gullivers_Travels_Swift.rtf - Books\Robinson_Crusoe _ Defoe.rtf
+    
+WHen testing on specific books, I use the 'most_similar:
 
 model_doc.docvecs.most_similar('Books\Tarzan_of_the_apes.rtf')
 
-returns the other Tarzan books, folowed by adventure books for adolescents; quite a good result.  
+This returns the other Tarzan books, folowed by adventure books for adolescents; quite a good result.  
 
 ('Books\\The_beasts_of_Tarzan.rtf', 0.7585173845291138),
  ('Books\\Jungle_tales_of_Tarzan.rtf', 0.7063543796539307),
@@ -600,6 +569,71 @@ returns the other Tarzan books, folowed by adventure books for adolescents; quit
  ('Books\\Meditations_Aurelius.rtf', 0.3536701798439026),
  ('Books\\Fairytales_H_C_Andersen.rtf', 0.25862976908683777),
  ('Books\\The_secret_of_the_island_verne.rtf', 0.25140485167503357)
+ 
+Tsne dimension reduction was done for this vectors as well
+
+all_doc_vectors_matrix = model_doc.wv.vectors
+all_doc_vectors_matrix_2 = tsne.fit_transform(all_doc_vectors_matrix)
+
+
+### 3) Topic extraction with doc2bow  and LDA
+
+For topic extraction I chose to use a third part of Gensim; doc2bow - using a bag-of-word method (bow: bag-of-words)
+I also used another algorithm; LDA; often used for nlp. LDA: Latent Dirichlet Allocation. LDA is in the Gensim package, too.  
+Create a Dictionary from the data, then a bag of words.  
+
+Creating a corpora Dictionary based on a preprocessed book corpus on sentence level
+Creating a matrix with the Doc2Bow
+Instanciating lda
+Performing lda on the corpus, using the dictionary
+Printing the calculated topics from the ldamodel
+
+Data input for Topic Extraction will be, on a book level, the set of preprocessed sentences from the 'make-fin-sent' function. For finding topics, we do not want filler words as they will form a data noise here. ''
+
+Using Alice as my example again I start with creating a corpora Dictionary and use 'alice_fin_sent'.
+
+dictionary_alice = corpora.Dictionary(alice_fin_sent)
+
+doc_term_matrix_alice = [dictionary_alice.doc2bow(doc) for doc in alice_fin_sent]
+
+Lda = gensim.models.ldamodel.LdaModel
+
+ldamodel_alice = Lda(doc_term_matrix_alice, num_topics=3, id2word = dictionary_alice, passes=50)
+
+alice_topics = ldamodel_alice.print_topics(num_words=5)
+for topic in alice_topics:
+    print(topic)
+    
+Presenting the proposed 3 topics using 50 passes: 
+
+(0, '0.014*"one" + 0.012*"duchess" + 0.009*"alice" + 0.008*"first" + 0.008*"little"')
+(1, '0.036*"alice" + 0.018*"little" + 0.016*"said" + 0.012*"rabbit" + 0.009*"could"')
+(2, '0.056*"said" + 0.037*"alice" + 0.012*"king" + 0.012*"know" + 0.009*"like"')
+
+Setting to 250 passes: 
+
+(0, '0.031*"alice" + 0.021*"said" + 0.010*"mouse" + 0.009*"thought" + 0.009*"go"')
+(1, '0.041*"alice" + 0.037*"said" + 0.010*"rabbit" + 0.007*"came" + 0.007*"moment"')
+(2, '0.017*"one" + 0.017*"little" + 0.013*"said" + 0.013*"alice" + 0.012*"way"')
+
+Setting to 750 passes:
+
+0, '0.066*"said" + 0.042*"alice" + 0.010*"duchess" + 0.009*"oh" + 0.009*"think"')
+(1, '0.014*"little" + 0.013*"know" + 0.010*"alice" + 0.009*"said" + 0.009*"queen"')
+(2, '0.031*"alice" + 0.015*"rabbit" + 0.011*"little" + 0.009*"white" + 0.008*"one"')
+
+
+
+The topic extraction must be performed for each book, and on a sentence level.
+As shown, I varied the no: of passes, and also the no of topics and num_words. It is not obvious that the results increase with more passes; is "said+alice+duchess+oh+think' better than 'one+duchess+alice+first+little' ?
+
+I can see that Proposed Topics are similar to the book's frequent words, but not 100% identical.
+
+The same topic extraction steps were done for 5 other books, with similar results. 
+As  a pattern, topics seem to include the books protagonist, the second most important character (if any) and some typical words
+
+
+
 
 
 In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
@@ -611,9 +645,43 @@ Was there any part of the coding process (e.g., writing complicated functions) t
 
 NLP enjoys a wide variety of resources for prepping and transforming data, Nevertheless, there is room for coding and adjusting before, during and after package usage. 
 
-Choice of tokenization algorithm.
-Hyphenated words - do I keep them?
-Stopword removal on sentence level
+Several of the improvement measures taken are mentioned above, a recap is as following;
+
+Preprocess : Data gathering and cleaning
+
+ - Legal clausuls at the end of the books were removed comppletely as i saw they introduced 'noise' in the text
+ - Some sentences in the book's beginnings were removed for same reasons; Internet Urls, email addresses etc. 
+ - Tokenizers on sentence and word level were tested and compared; I chose the one that kept full original words
+ 
+1) Word analysis 
+ - Fdist results from raw_corpus were poor, I changed the input to sentences with both cleaning of characters and stopwords removed
+ - Word2Vec model parameters:
+       num_features = 200 (kept unchanged)
+       min_word_count = 20 (inreased from 10 to 20)
+       num_workers = multiprocessing.cpu_count() (unchanged)
+       context_size = 10 (increased from 5 to 10)
+       downsampling = 1e-4 (unchanged)
+       seed = 9 (unchanged)
+       
+ - TSNE parameters were tweaked; aiming a balance between results and runtime
+ 
+ 
+ 2) Book analysis
+ 
+ The book analysis is similar to the word analysis method-wise. I did tryouts with parameters for the model and the tsne dimension reduction. On book-level, the model seems less sensitive for parameter tuning, probably because we operate on a book-level where similarity will be more obvious, the most typical result being sililarity by author, followed by genres, picking out adventure stories for adolescents.  
+ 
+ 3) Topic extraction
+ 
+ The final task turned out to be quite straightforward when I had found the recommended method from books and articles.
+ 
+ The method is compact when all data is preprocessed and the steps prepared code-wise. I chose to write small code packages for a 'pipeline' and tested this on several books. The results are of varying quality, but confirm the idea of being able to extract topics automatically from larger texts, such as my books.   
+ 
+ One of the articles about the topic is the following, by Susan Li : 
+ https://towardsdatascience.com/topic-modelling-in-python-with-nltk-and-gensim-4ef03213cd21
+ 
+ LDA parameters
+
+
 LDA parameters 
 Vector parameters
 Number of epochs
@@ -630,33 +698,52 @@ Is the process of improvement clearly documented, such as what techniques were u
 Are intermediate and final solutions clearly reported as the process is improved?
 
 ## IV. Results
-(approx. 2-3 pages)
 
 1) Word analysis
 - Confirming vocabulary, clear visual of vocab in a plotted wordcloud
 - Zooming in on chosen words, see the vicinity words
 - identifying most frequent words
 
-
 2) Book similarity
 - Good results after parameter tweaks. Obvious similarity between books by the same author, also similarity caused by plot and genre.
+- Visuals in form of a wordcloud as for the word analysis 
 
-2) Topic extraction
-- Quite good results. Verification by book knowledge and a generous reading / interpretation of the topic words.   
+3) Topic extraction
+- Quite good results. 
+- Verification of result, in addition to scoring figures done by book knowledge and a generous interpretation of the topic words.   
 
 Test of unknown book 
 Finally I found a completely unknown book and performed Topic extraction on the text
 
-The results from this old book about food and chemmistry strikes me by being suprisingly relevant for today's view on food and health. 
+The results from this old book about food and chemistry strikes me by being suprisingly relevant for today's view on food and health. 
 
  '0.017*"food" + 0.016*"protein" + 0.012*"quantity" + 0.011*"matter"'
  '0.007*"salt" + 0.007*"one" + 0.006*"food" + 0.005*"meat"'
 
 
+### Extra : Test of a contemporary document
+
+For fun and curiosity, I tested the topic extraction on a random modern document; "Google Chrome Terms of Service"
+
+Spending 5 minutes downloading the file, running it through the code, gave this topic extraction:
+
+(0, '0.031*"terms" + 0.030*"adobe" + 0.020*"software" + 0.020*"use" + 0.020*"sublicensee" + 0.019*"shall" + 0.017*"may"')
+(1, '0.030*"sublicensee" + 0.028*"terms" + 0.021*"google" + 0.020*"adobe" + 0.018*"rights" + 0.013*"additional" + 0.012*"may"')
+(2, '0.035*"adobe" + 0.028*"software" + 0.018*"video" + 0.018*"code" + 0.017*"content" + 0.014*"may" + 0.013*"avc"')
+(3, '0.071*"google" + 0.032*"terms" + 0.027*"services" + 0.020*"agreement" + 0.018*"adobe" + 0.018*"chrome" + 0.014*"content"')
+(4, '0.046*"google" + 0.038*"services" + 0.023*"may" + 0.021*"use" + 0.019*"software" + 0.017*"adobe" + 0.017*"sublicensee"')
+
+It is not a trimmed executive summary, but it indicates the content, ie by the last topic suggestion
+
+-"google-services-may-use-software-adobe-sublicensee'
 
 ### Model Evaluation and Validation
 
 1) Word analysis
+
+in this Kaggle post below (chapter 2 and 3) -  and in other similar articles, different options for further work on the word vecors, beyond the bag-of_words (bow), are discussed. Is seems to be a common consensus that the 'bow' method is robust and gives consistently good results compared to other methods.  
+
+https://www.kaggle.com/c/word2vec-nlp-tutorial#part-1-for-beginners-bag-of-words
 
 
 2) Document comparisons
@@ -690,7 +777,9 @@ Have you thoroughly analyzed and discussed the final solution?
 Is the final solution significant enough to have solved the problem?
 
 ## V. Conclusion
-(approx. 1-2 pages)
+
+
+
 Free-Form Visualization
 In this section, you will need to provide some form of visualization that emphasizes an important quality about the project. It is much more free-form, but should reasonably support a significant result or characteristic about the problem that you want to discuss. Questions to ask yourself when writing this section:
 Have you visualized a relevant or important quality about the problem, dataset, input data, or results?
