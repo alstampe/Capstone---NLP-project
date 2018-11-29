@@ -254,6 +254,7 @@ Below is a figure showing the count of the 30 most common words in the corpus, a
 
 
 Applying the word frequency on only Alice in Wonderland, without stopwords, we get this list: 
+
      ('alice', 173),
      ('said', 144),
      ('little', 59),
@@ -273,13 +274,13 @@ For 'The junglebook' , the 10  most frequent words when cleaned for filler words
 
 Cleaning the corpus can be done by several small cleaning code-snippets;
 
-    - sentence tokenization
-    - word tokenizations
-    - removing unwanted characters (often called normalization)
-    - converting all words to lowercase  
-    - removing stopwords
-    - lemmming and stemming
-    - pos-tagging 
+    sentence tokenization
+    word tokenizations
+    removing unwanted characters (often called normalization)
+    converting all words to lowercase  
+    removing stopwords
+    lemmming and stemming
+    pos-tagging 
 
 The 5 first cleaning steps are described. The two latter were tested on the corpus, but not used for later transformation purposes. 
 Code for these tests are still kept in the Notebook.  
@@ -301,27 +302,28 @@ Algorithms used for the projects are chosen based on my understanding of useful 
 
 As described in the book, there are three commonly used ways to treat text analysis, often by combinations of the three;
 
-  - The Gensim way
-  - The nltk way
-  - The ScikitLearn way
+      The Gensim way
+      The nltk way
+      The ScikitLearn way
 
 My use of algorithms are mainly by using Gensim utilities, but also nltk resources.
 
-  The data preprocessing was described in previous part of the report;
-  - Use of word- and sentence tokenizers from nltk.tokenize
-  - Use of nltk.probability.FreqDist
-  - Use of nltk.corpus.stopwords 
-  - Use of gensim.utils.simple_preprocess
+The data preprocessing was described in previous part of the report;
+      
+      Use of word- and sentence tokenizers from nltk.tokenize
+      Use of nltk.probability.FreqDist
+      Use of nltk.corpus.stopwords 
+      Use of gensim.utils.simple_preprocess
 
 Word and document analysis
   
-    - gensims Word2Vec and Doc2Vec for vectorization of corpus
-    - gensim similarities for similarity analysis
-    - sklearn.manifold.TSNE for dimension reduction
+      gensims Word2Vec and Doc2Vec for vectorization of corpus
+      gensim similarities for similarity analysis
+      sklearn.manifold.TSNE for dimension reduction
 
 Topic extraction
 
-    gensim Dictionary and LDAmodel from gensim.models
+      gensim Dictionary and LDAmodel from gensim.models
  
 For all algorithms the initial parameters are set based on examples from the Udacity courses, the book, or articles. Some are set from characteristics of the date (ie vocabulary size). Many of the parameters are changed through the project to understand how and if the models can be optimized.    
 
@@ -423,29 +425,29 @@ Below are two examples, the first on the initial model version, the second on an
 
     word_model.wv.most_similar('pride')
 
-('envy', 0.7191991806030273),
- ('ambition', 0.7174361348152161),
- ('meekness', 0.7124776244163513),
- ('fortitude', 0.7029587030410767),
- ('chastisement', 0.7014052271842957),
- ('disdain', 0.7011118531227112),
- ('hypocrisy', 0.7005854845046997),
- ('penitence', 0.6966824531555176),
- ('cowardice', 0.696437656879425),
- ('deceitful', 0.6881036758422852)
+    ('envy', 0.7191991806030273),
+     ('ambition', 0.7174361348152161),
+     ('meekness', 0.7124776244163513),
+     ('fortitude', 0.7029587030410767),
+     ('chastisement', 0.7014052271842957),
+     ('disdain', 0.7011118531227112),
+     ('hypocrisy', 0.7005854845046997),
+     ('penitence', 0.6966824531555176),
+     ('cowardice', 0.696437656879425),
+     ('deceitful', 0.6881036758422852)
 
     word_model.wv.most_similar('hunger')
 
-('thirst', 0.8457642197608948),
- ('pangs', 0.7334113121032715),
- ('fatigue', 0.7226671576499939),
- ('gnawing', 0.7220444679260254),
- ('starved', 0.6977795362472534),
- ('exhaustion', 0.6882658004760742),
- ('famine', 0.6871694922447205),
- ('hungry', 0.6860570907592773),
- ('sickness', 0.6858627796173096),
- ('craving', 0.6856997013092041)
+    ('thirst', 0.8457642197608948),
+     ('pangs', 0.7334113121032715),
+     ('fatigue', 0.7226671576499939),
+     ('gnawing', 0.7220444679260254),
+     ('starved', 0.6977795362472534),
+     ('exhaustion', 0.6882658004760742),
+     ('famine', 0.6871694922447205),
+     ('hungry', 0.6860570907592773),
+     ('sickness', 0.6858627796173096),
+     ('craving', 0.6856997013092041)
  
 #### Word pairing 
 Finally, I want to try out the classic 'king-to-queen' vector comparison. 
@@ -647,7 +649,7 @@ TSNE parameters were tweaked similarly; aiming a balance between results and run
 
 A brief summary of the results for the three main tasks :
 
-1) Word analysis results
+#### Word analysis results
 
     Statistics vere produced for corpus and books, on different levels
     Corpus and vocabulary could be investigated, with a clear visual of vocabulary in a plotted wordcloud
@@ -656,15 +658,15 @@ A brief summary of the results for the three main tasks :
     Similarity words were delivered for any chosen word
     Word pairs were produced on a satisfying level
 
-2) Book similarity
+#### Book similarity
 
-- Good results after parameter tweaks. Obvious similarity between books by the same author, also similarity caused by plot and genre.
-- Visuals in form of a wordcloud as for the word analysis 
+    Good results after parameter tweaks. Obvious similarity between books by the same author, also similarity caused by plot and genre.
+    Visuals in form of a wordcloud as for the word analysis 
 
-3) Topic extraction
+#### Topic extraction
 
-- Acceptable good results. 
-- Verification of result, in addition to scoring figures done by book knowledge and a generous interpretation of the topic words.   
+    Acceptable good results. 
+    Verification of result, in addition to scoring figures done by book knowledge and a generous interpretation of the topic words.   
 
 Test of unknown book 
 Finally, I found a completely unknown book on Gutenberg and performed Topic extraction on the text
@@ -717,7 +719,7 @@ Comparing documents by applying code to literal pieces of text as the library re
 
 Diving into NLP has been challenging yet satisfying as this is not a redo of projects but new skills and learnings. 
 
-This is not a straight forward-technique but an area where any project will be a series of crossroads where choices must be made of methods, algorithms and so on. Iterations is neccessary, and as metioned earlier there will be separate lanes for the individual questions. 
+This is not a straight-forward technique but an area where any project will be a series of crossroads where choices must be made of methods, algorithms and so on. Iterations is neccessary, and as metioned earlier there will be separate lanes for the individual questions. 
 
 Topic extraction is the problem I am most eager to try out internally. This is the part of the project where there is the most room for improvement, if looking at the results. Yes, the topics suggested are ok, but the precision and presentetation can be better.  
 
@@ -729,9 +731,5 @@ My project did not include establishing a user interface for input of random doc
 
 Topic extraction need to be investigated and tuned more, to find the optimal parameters for a given corpus.
 
-In some initial assessments of the text I tried out two different tokenizers and was suprised to see the diference in vocabulary size it produced. At furter investigation (I made the diff set by subtracting the smallest vocab from the larger) i could see where the tokenizers diverge. The punkt_tokenizer splits hyphenated words, the standard nltk tokenizer does not. Diving further into this would probably be of use. 
-
-A discussion on tokenizers is presented here: 
-https://www.researchgate.net/publication/264157595_A_Comparison_of_13_Tokenizers_on_MEDLINE
-
+Overall, improvements wil have to be initiated by learning more; reading and trying out more options.    
 
