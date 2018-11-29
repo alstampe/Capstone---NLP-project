@@ -1,7 +1,7 @@
 DNB Data Scientist for Enterprise Nanodegree Program
 ## Capstone Project
 Anne Line Stampe, DNB
-NOvember 30th, 2018
+November 30th, 2018
 
 ## I. Definition
 
@@ -69,14 +69,16 @@ The Notebook is quite extensive as it includes all code used for testing differe
 
 As described in the capstone project proposal, the three parts of my project are all of a nature where sharp metrics are not always present. The individual tasks will produce some comparable values, but more important is the subjective opinion ie: 
 
-1) Similarity - words
-    'Are the similarity suggestions on single words correct according to my language understanding'?
-    'Does the word pairing examples on the vectorized data make sense?'
+#### Word similarity 
 
-2) Similarity - books
+    Are the similarity suggestions on single words correct according to my language understanding'?
+    Does the word pairing examples on the vectorized data make sense?'
+
+#### Book similarity 
+
     'Does the book similarity look sensible, given my knowledge of the books?'.    
 
-3) Topic extraction
+#### Topic extraction
     'Is this a readable and good topic extraction from the given book?'
 
 ## II. Analysis
@@ -148,16 +150,16 @@ Although the filenames indicate .rtf (Rich Text Format), they are in straightfor
 
 After a few assessments of the data on a word level I noticed some parts of the vocabulary that I did not expect from older works, such as 'email'. I had screened through the first part of most of the books to verify the content and format, which all seemed correct. At closer inspection I realized that all ebooks had a standard, quite long, section at the end, containing legal description of the ebook handling. In addition to the introduction of unwanted irrelevant vocabulary to the corpus this part is the same in all books and would therefore reduce the uniqueness of the items. The section was for this reason removed from each of the books.   
 
-- The complete volume of words from the books, the 'corpus' was analyzed thouroughly. 
-  There are many levels (and combination of levels) to look at the corpus;  
+The complete volume of words from the books, the 'corpus' was analyzed thouroughly. 
+There are many levels (and combination of levels) to look at the corpus;  
 
-      Corpus level
-      Book level
-      Sentence level
-      Vocabulary level (unique words)
-      Word level (real words, or 'tokens')
-      Level of 'words' before removing non-meaningful characters.  
-      Level of 'reduced tokens'; ie words cleaned and/or transformed to a netted minimum.   
+    Corpus level
+    Book level
+    Sentence level
+    Vocabulary level (unique words)
+    Word level (real words, or 'tokens')
+    Level of 'words' before removing non-meaningful characters.  
+    Level of 'reduced tokens'; ie words cleaned and/or transformed to a netted minimum.   
 
 Below is an example of numbers for these levels
 
@@ -189,7 +191,9 @@ For sentence no:99 in the Alice in Wonderland corpus we can see how the word tok
 
 The word_tokenizer keeps the hyphenated words as one token, the wordpunct_tokenize splits these words into 3 separate tokens.  When analyzing text in literary works, it makes sense to keep the original word as written by the author, this sentence is a good example as the words 'salt' and 'water' separately is quite different from 'salt-water'.  The first could be a part of a recipe for baking bread, the second indicates seawater - or tears, as is the case in this story. 
 
-I choose to use the word_tokenizer for this book-based project, although another context could be a case for preferring the  wordpunct_tokenizer. Use of hyphenation varies between languages, is said to be declining in the English language and is less common in Norwegian. 
+I choose to use the word_tokenizer for this book-based project, although another context could be a case for preferring the  wordpunct_tokenizer. Use of hyphenation varies between languages, is said to be declining in the English language and is less common in Norwegian. A discussion on tokenizers is presented here: 
+https://www.researchgate.net/publication/264157595_A_Comparison_of_13_Tokenizers_on_MEDLINE
+
 
 #### Cleaning the sentences for stopwords
 
