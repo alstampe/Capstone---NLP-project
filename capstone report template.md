@@ -552,7 +552,7 @@ Tsne dimension reduction was done for this vectors as well, and result inspected
     all_doc_vectors_matrix_2 = tsne.fit_transform(all_doc_vectors_matrix)
 
 
-### 3) Topic extraction with doc2bow  and LDA
+### 3) Topic extraction with doc2bow and LDA
 
 For topic extraction I chose to use a third part of Gensim; doc2bow - using a bag-of-word method (bow: bag-of-words)
 I also used another algorithm; LDA; often used for nlp. LDA: Latent Dirichlet Allocation. LDA is also from the Gensim package.
@@ -560,7 +560,7 @@ I also used another algorithm; LDA; often used for nlp. LDA: Latent Dirichlet Al
 Create a Dictionary from the data, then a bag of words.  
 About LDA : https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation
 
-Using Alice in Wonderland as example, these are the steps for Topic Extraction, starting with the alice_fin_sent version of preprocessed corpus, as described earlier. For topic extraction, filler words must be removed. 
+Using Alice in Wonderland as example, these are the steps for Topic Extraction, starting with the alice_fin_sent version of preprocessed corpus, as described earlier. For topic extraction, filler words must be removed. A Lda model is build using the dictionary-based matrix.  
 
     dictionary_alice = corpora.Dictionary(alice_fin_sent)
     
