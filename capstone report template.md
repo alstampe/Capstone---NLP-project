@@ -86,15 +86,24 @@ As described in the capstone project proposal, the three parts of my project are
 
 #### Word similarity 
 
+    Does the vocabulary analysis give me a useful insight n the documents' nature?
     Are the similarity suggestions on single words correct according to my language understanding'?
     Does the word pairing examples on the vectorized data make sense?'
+    
+    Main question: 'Would I trust the outcome of the nlp enough to replace a human reading the whole document?' 
 
 #### Book similarity 
 
-    'Does the book similarity look sensible, given my knowledge of the books?'.    
+    'Does the book similarity look sensible, given my knowledge of the books?'.   
+    'Do some of the similarity results give me a new and useful insights in the document contents?'
+    
+    Main question: 'Do I trust the results to be a useful tool in my workday?'
+    'Can I maybe even believe in gaining more insight and efficiency by seeing patterns in larger volumes of documents?'  
 
 #### Topic extraction
     'Is this a readable and good topic extraction from the given book?'
+    
+    Main question: 'Do I ses this as a reliable tool for my collegues to use for fast intro to text content?'   
 
 ## II. Analysis
 
@@ -660,6 +669,40 @@ TSNE parameters were tweaked similarly; aiming a balance between results and run
  
  One of the useful articles about the topic is the following, by Susan Li : 
  https://towardsdatascience.com/topic-modelling-in-python-with-nltk-and-gensim-4ef03213cd21
+ 
+ 
+### Learnings and challenges
+
+#### Preprocess learnings
+
+My main learning from the preprocessing is the importance of understanding how the output from this processing will impact the next step. Cleaning text is not equal to cleaning numerical and categorical values, and there are more choices to be made.
+
+The format of the text preprocessing output must match the expected format for the vectorization. 
+Providing a text corpus when tokens are expected will return analysis of single characters, not 'words'. 
+For most purposes the expetced format is of clean tokens on a sentence level.
+    
+    Example: for one test I got a 'vocabulary' of 74; it turned out to be the 74 characters available on my keyboard
+    Example 2: I quite often got the error message 'expected format 1, got format 2'.  
+    
+The use of tokenizers and other cleaning code options is crucial to get sensible results. Even if I read this on beforehand, it was suprising to see how large a part of the text could be removed/cleaned and still keep the essence of the content. 
+This does not imply that all cleaning tools should always be applied. If we want to keep track of all persons in a novel, it is probably not wise to convert all words to lowercase. And - not all analysises make sense, as for most frequent sentences 
+
+    Example: My first attempts to find most frequent words were useless before I removed thrash characters and stopwords
+    Example: Trying to find most frequent sentences returned only 'Names:'. Why? These are from plays; 'Nora:', Hedda:' etc 
+    
+When getting to the vectorization and model usage I encountered more challenges. Again, the input had to be a correct format and the level aligned with the model. Word2Vec is used on the whole corpus, but Doc2Vec is applied on a document level.
+
+My first attemps on the Topic Extractions Doc2Vec failed, first because of format mismatch (again!), then on performance as I though I could perform this on the full collection, this being tagged by individual books. This was not a success, the job went on for 5-6 hours and may never have completed. I chose to perform the training on document (book) level instead, which went perfectly fine. 
+
+Some of the code for use of models is written based on similar examples found in books, forums etc. As software is rapidly evolving, I often experience that syntax is outdated and must be changed. This is not a big challenge, but must be handled. 
+
+    Example: word2vec syntax had to be updated slightly from my first attempts to avoud warning when run
+    
+There are many useful library resources that makes nlp easier than hand-coding. I did some tryouts with vectors to analyse the word-based corpus, spending hours with vector handling, sorting and formatting the results - to get exactly the same result as from the compact FreqDist() function from gensim. (This is left in the Notebook as an 'effort documentation').     
+
+    Example: There is an easy way and a hard way to find frequent words, choose one for learning, one for work
+
+The most challenging in this project was not in the coding in itself, but navigating among the different options and understanding the connection bethween the initial data and the results I wanted to achieve. The choices of methods for analysis are many, and I realize I have only schratched the supface of this topic.  
  
 ## IV. Results
 
