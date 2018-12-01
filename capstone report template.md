@@ -754,7 +754,23 @@ It is not a trimmed executive summary, but it indicates the content, ie by the l
 
     "google-services-may-use-software-adobe-sublicensee'
 
-### Additional Model Evaluation and Comments
+### Additional Model Evaluation
+
+#### Model sensitivity and robustness
+
+Analysing data is heavily dependent on thorough data cleaning and preparation, even more so than many other projects I have done. The maths may be right but the output of little value if context and text characteristics are not handled properly. Tuning the models improved the results somewhat, but not with any dramatic, threshold effects. The resulting robustness seems to vary beween the topics;
+
+    Word analysis: Data must be clean and trimmed with good text insight. Parameters in model important for results.  
+    
+    Document similarity : The least sensitive topic, the results are fair on all tries, parameters have moderate effect
+    
+    Topic extraction : The results were clearly affected by model parameters, but more difficult to asses quality in results. 
+    This may sound strange; the suggested topic word change, but the value of topic description is difficult to measure. 
+    
+In short; the quality of the results seem to be more dependent on data quality and method choice rather than model parameters.        
+
+
+### Comments
 
 Model usability
 
@@ -775,6 +791,39 @@ Comparing documents by applying code to literal pieces of text as the library re
 
 
 ## V. Conclusion and Reflection 
+
+### Short summary of the steps taken
+
+    Finding the best case and relating to my personal interests, defining the case in the project proposal
+    
+    Choosing the best 'mini-library' according to my criteria
+    
+    Reading the book on text analysis for more knowledge in the field
+    
+    First assessments of the quality of the texts, doing some initial corrections
+    
+    A deep-dive into the world of tokenization on word and sentence level - and other cleaning alternatives
+    
+    Investigating options for word and book analysis; choosing among features in gensim, nltk and scikitlearn
+    
+    Performing FreqDist on corpus after tokenization
+    
+    Building the first models in word2vec and doc2vec, partially in parallell
+    
+    Assessing results, making visuals
+    
+    Starting the topic extraction part, evaluating whether to to TFidf or not
+    
+    Building the neccessary 'pipeline' for the steps in the lda-based topic extraction
+    
+    For all 'lanes' - iterations, testing more books, comparing, improving.
+    
+    Finally, introducing an 'unknown' book and a new document for test purposes 
+    
+    Wrapup and report.
+    
+
+
 
 Diving into NLP has been challenging yet satisfying as this is not a redo of projects but new skills and learnings. 
 
