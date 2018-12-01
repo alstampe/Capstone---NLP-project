@@ -29,6 +29,21 @@ Exploring NLP opportunities does not imply that all human handling of text is ex
 
 I go into this project with a moderate ambition of precision from the document analysis, but expect to be able to confirm the hypothesis stated in the three questions. For such a complicated field, a modest proof of concept is a good basis for believing in results from a possible full-scale project later.    
 
+### Motivation for the three chosen problem statements
+
+The three problems are formed both for building skills and proving NLP capabilities and for practical purposes.
+
+The reason for these three problem statements and how they relate to my practical challenge;
+    
+Word analysis and similarity checks will support an automated analysis of large documents by giving a 'heads-up' of the                 vocabulary and text content, ie by listing frequent words in a document (as an alternative to Topic Extraction).
+In Norway most people are quite fluent in English, but being able to 'on the fly' look for similar words in the text / document can     be a guidance for understanding the document and increase language sensibility.
+    
+Document comparisons can be useful when looking at large documents, I can imagine doing this when starting a business days'             batch of received Trade Finance or Loan documents; being able to compare new documents with a library of historical documents to       identify the most similar objects. In a team, people specialice on fields and we often want to direct cases to the one with the         most relevant skillset on a topic or perhaps on a client or a customer segment. As these document have a standard front page, the       case content is not always identifyable by first glance only.
+An alternative use-case can be to retrieve older documents similar to a newly arrived, to investigate how a similar historical case was handled. Another idea is to use this for finding texts written by the same person if this information is not available elsewhere. 
+
+Finally, the value of topic extraction is interesting for several situations, some similar to the above mentioned. Backoffice processes in DNB still handles large numbers of extensive documents, and a topic extract will be helpful for sorting and prioritizing. If numbers of words in extract are increased it could help preparing for meetings based on insight in large reports.        
+
+
 ### Strategy for the work
 
 All text analysis, as other ML tasks, starts with understanding the data, the questions asked and the tools and methods needed to answer the questions with available data.
