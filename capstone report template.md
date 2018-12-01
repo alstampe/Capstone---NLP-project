@@ -359,14 +359,25 @@ Although we often refer to Word2Vec as one algorithm, it is actually a group of 
     'Word2vec is a group of related models that are used to produce word embeddings. These models are shallow, two-layer neural networks     that are trained to reconstruct linguistic contexts of words. Word2vec takes as its input a large corpus of text and produces a         vector space, typically of several hundred dimensions, with each unique word in the corpus being assigned a corresponding vector in     the space. Word vectors are positioned in the vector space such that words that share common contexts in the corpus are located in      close proximity to one another in the space.'
     
 This definintion describes well the main outline of this project; the algorithm taking a large text corpus and procucing a vector space where similar words are placed close to each other'. . In the project the vector space is dimensionally reduced to be able to look at the result in a x/y axis.The word 'word embedding' is used to the describe the process of creating numerical vectors from text.
+
+I like the exapmple most used for this vector representation, the king- queen vector representation
+
+![image](https://user-images.githubusercontent.com/42574791/49329981-1f0b6d00-f588-11e8-8f72-eca2aa01284b.png)
+
 It is important to understand that these algorithms are specifically designed to be applied on text data. If we dig deeper into the use of the models there is normally a choice of technique between bag-of-words and skip-grams. The difference can be seen as 'from word to context' vs 'from context to word', or, more precicely described from Wikipedia again : 
 
     'In the continuous bag-of-words architecture, the model predicts the current word from a window of surrounding context words. 
     In the continuous skip-gram architecture, the model uses the current word to predict the surrounding window of context words.'
     
-Both has its pros and cons as to accuracy and performance. In the project, bag-of-words is used. The parameter 'context window' is related to this, saying how may words are regarded as the 'context' for the algorithm.  
+Both has its pros and cons as to accuracy and performance. In the project, bag-of-words is used. The parameter 'context window' is related to this,saying how may words are regarded as the 'context' for the algorithm.  
 
-The algorithms are trained on the project corpus, as described. 
+The algorithms are trained on the project corpus, as described. The larger the corpus, the richer the vocabulary. Of course, this approach will limit the word knowledge to the words we feed the algorithm. If I try to find or compare a to word not present in my books, it will fail. This is very different from a number-based model which 'knows' all possible numbers not in the training set.   
+ 
+Lasty, I use gensims Lda algorithm for topic extraction, described by Wikipedia here and more detailed in the article linked
+
+    In natural language processing, latent Dirichlet allocation (LDA) is a generative statistical model that allows sets of observations     to be explained by unobserved groups that explain why some parts of the data are similar. For example, if observations are words       collected into documents, it posits that each document is a mixture of a small number of topics and that each word's presence is       attributable to one of the document's topics. LDA is an example of a topic model.
+
+https://blog.imaginea.com/lda-nlp-and-code-analysis/  
 
 
 ### Benchmark
