@@ -23,7 +23,7 @@ As described in the project proposal my project covers three topics;
 The project has a high relevance for my job; in DNB we want to be able to understand documents by assessing vocabulary, comparing documents and extracting topics with algorithms as an alternative to a 100% manual reading and understandig the texts. There is also a need to be able to isolate specific data elements from documents (names, account numbers, values etc), but this is not a part of the Capstone scope. Because of this internal relevance, I plan to try out the project code on internal documents later. 
 
 ### Problem Statement
-The underlying problem I want to address is the challenge we face when automating our processes in the bank; some tasks are by nature based on non-numerical data and the understanding of 'real language'. We still have to maintain sizeable staff for digesting large volumes of information manually with related cost and risk of human errors. There is a need to speed up the process and digitize results to be able to make data a part of a digital process. To harvest reusable insight from extracted information would be a valuable by-product. Fundamentally, the initiative can also add traction to the collaborative effort of transforming the bank to a more tecnho-driven institution and illustrate opportunities in the field of machine learning and AI.     
+The underlying problem I want to address is the challenge we face when automating our processes in the bank; some tasks are by nature based on non-numerical data and the understanding of 'real language'. We still have to maintain sizeable staff for digesting large volumes of information manually with related cost and risk of human errors. There is a need to speed up the process and digitize results to be able to make data a part of a digital process. To harvest reusable insight from extracted information would be a valuable by-product. Fundamentally, the initiative can also add traction to the collaborative effort of transforming the bank to a more tech-driven institution and illustrate opportunities in the field of machine learning and AI.     
 
 Exploring NLP opportunities does not imply that all human handling of text is expandable, there are numerous situations where we must have skilled people reading and analyzing text based on more non-procedural rules, but it is a start on a journey to a more digital bank.  
 
@@ -878,7 +878,9 @@ Comparing documents by applying code to literal pieces of text as the library re
     
 There are several visuals included in the report for word frequencies, and word vector distributions.
 
-For fun I have created a wordcloud for Vernes '80 days around the world'. It confirms the simple observation mentioned above and the very core of this project; in books the most frequent words seem to be the protagonist (Fix), the word 'said' (dialogue intensive texts) and tgen a very large number of stopwords and 'data noise'. What we like to think as the 'essence' of the books is quite well hidden in the mass of words and takes elaborate digging and interpretation to understand.  
+For fun - but also for giving a symbol of nlp tasks - I have created a wordcloud for Vernes '80 days around the world'. It confirms the simple observation mentioned above and the very core of this project; in books the most frequent words seem to be the protagonist (Fix), the word 'said' (dialogue intensive texts) and then a very large number of stopwords and 'data noise'. What we like to think as the 'essence' of books and other texts is quite well hidden in the mass of words and takes elaborate digging and interpretation to understand.  
+
+![image](https://user-images.githubusercontent.com/42574791/49338680-09985080-f625-11e8-9316-4475342607b1.png)
 
 
 Diving into NLP has been challenging yet satisfying as this is not a redo of projects but new skills and learnings. 
