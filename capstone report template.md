@@ -372,13 +372,36 @@ It is important to understand that these algorithms are specifically designed to
 Both has its pros and cons as to accuracy and performance. In the project, bag-of-words is used. The parameter 'context window' is related to this,saying how may words are regarded as the 'context' for the algorithm.  
 
 The algorithms are trained on the project corpus, as described. The larger the corpus, the richer the vocabulary. Of course, this approach will limit the word knowledge to the words we feed the algorithm. If I try to find or compare a to word not present in my books, it will fail. This is very different from a number-based model which 'knows' all possible numbers not in the training set.   
+
+### TSNE for enabling visuals 
+'t-SNE stands for t-Distributed Stochastic Neighbor Embedding. It visualizes high-dimensional data by giving each datapoint a location in a two or three-dimensional map. t-SNE is good at creating a map that reveals structure and embedding relationships at many different scales. This is particularly important for high-dimensional inter-related data that lie on several different low-dimensional manifolds, such as images of objects from multiple classes seen from multiple viewpoints.'
+
+As described in the article 't-SNE separates and clusters group of words that we know semantically similar or different respectively', and is therefore often used for text analysis. 
+
+ref:https://www.codeproject.com/tips/788739/%2fTips%2f788739%2fVisualization-of-High-Dimensional-Data-using-t-SNE
+
  
-Lasty, I use gensims Lda algorithm for topic extraction, described by Wikipedia here and more detailed in the article linked
+### Lda for topic extraction
+
+Lasty, I use gensims Lda algorithm for topic extraction, described by Wikipedia below and more detailed in the article linked here
 
     In natural language processing, latent Dirichlet allocation (LDA) is a generative statistical model that allows sets of observations     to be explained by unobserved groups that explain why some parts of the data are similar. For example, if observations are words       collected into documents, it posits that each document is a mixture of a small number of topics and that each word's presence is       attributable to one of the document's topics. LDA is an example of a topic model.
 
 https://blog.imaginea.com/lda-nlp-and-code-analysis/  
 
+Using plate notation the Bayesian network for LDA would look like the figure below giving an illustration of the number of documents (M), words(N) and topics (K). Alpha, betha, theta and rho represents parameters and topic distribution.  
+The article describes the maths for the lda, with a short summary:
+
+    Tokenize the documents into collection of words.
+    Find sensible values for aplha, beta and K.
+    Initialize random topic for each word in the corpus.
+    Repeat a Gibbs iteration (sample-based derivation and update) until sufficient result
+    For each word of each document, calculate values for each topic k – 
+    Assign as the topic k (from among total K topics) according to the calculated proability
+
+![image](https://user-images.githubusercontent.com/42574791/49337193-c97aa300-f60f-11e8-8e38-01dd2048084c.png)
+
+Teh Lda model algorithm was used on a matrix, using bag-of-words with gensims doc2bow and a corpora dictionary.  
 
 
 ### Benchmark
@@ -851,7 +874,11 @@ Comparing documents by applying code to literal pieces of text as the library re
     
     Wrapup and report.
     
+### Visuals illustrating the results    
+    
+There are several visuals included in the report for word frequencies, and word vector distributions.
 
+For fun I have created a wordcloud for Vernes '80 days around the world'. It confirms the simple observation mentioned above and the very core of this project; in books the most frequent words seem to be the protagonist (Fix), the word 'said' (dialogue intensive texts) and tgen a very large number of stopwords and 'data noise'. What we like to think as the 'essence' of the books is quite well hidden in the mass of words and takes elaborate digging and interpretation to understand.  
 
 
 Diving into NLP has been challenging yet satisfying as this is not a redo of projects but new skills and learnings. 
