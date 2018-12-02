@@ -380,6 +380,7 @@ Lasty, I use gensims Lda algorithm for topic extraction, described by Wikipedia 
 https://blog.imaginea.com/lda-nlp-and-code-analysis/  
 
 
+
 ### Benchmark
 
 A benchmark for performance for this project is somewhat challenging as the 'real-life' benchmark starts with time and cost for a person reading and understanding text. Such time-and cost values not often used as benchmark in these experiments. Nevertheless, these figures will be the basis for a business case if the solution is to be evaluated for a project, measured against the project costs.   
